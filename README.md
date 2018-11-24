@@ -1,7 +1,6 @@
 # CSharp8583
-C# Implementation of the ISO-8583 banking protocol
 
-The CSharp8583 Library is an implementation of the [ISO-8583](https://en.wikipedia.org/wiki/ISO_8583) Protocol as a .NET Standard 2.0 Library.
+The CSharp8583 Library is a C# implementation of the [ISO-8583](https://en.wikipedia.org/wiki/ISO_8583) Protocol as a .NET Standard 2.0 Library.
 
 The library provides the following functions,
 
