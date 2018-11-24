@@ -106,6 +106,40 @@ namespace CSharp8583.Tests
             Assert.Equal(asciiMessageBytes, ConstantValues.ASCIIBytesWithSecondaryBitmap);
         }
 
+        [Fact]
+        public void Parse_ASCII_Message_With_F63()
+        {
+            ASCIIMessageWF63 asciiMessageF63 = _iso8583.Parse<ASCIIMessageWF63>(ConstantValues.ASCIIBytesWithResField);
+
+            Assert.NotNull(asciiMessageF63);
+            Assert.NotNull(asciiMessageF63.Field63);
+            Assert.Equal("JI091003", asciiMessageF63.Field41);
+            Assert.Equal("000000000111111", asciiMessageF63.Field42);
+            Assert.Equal("1234", asciiMessageF63.Field63.Tag01);
+            Assert.Equal("22222222222", asciiMessageF63.Field63.Tag02);
+            Assert.Equal("PROPERTY TAXES", asciiMessageF63.Field63.Tag03);
+            Assert.Equal("1111111111111", asciiMessageF63.Field63.Tag04);
+        }
+
+        [Fact]
+        public void Build_ASCII_Message_With_F63()
+        {
+            var asciiMessageF63 = new ASCIIMessageWF63
+            {
+                Field41 = "JI091003",
+                Field42 = "000000000111111",
+                Field63 = new ResField63
+                {
+                    Tag01 = "1234",
+                    Tag02 = "22222222222",
+                    Tag03 = "PROPERTY TAXES",
+                    Tag04 = "1111111111111"
+                }
+            };
+
+            var asciiMessage63Bytes = _iso8583.Build(asciiMessageF63, "0100");
+            Assert.Equal(asciiMessage63Bytes, ConstantValues.ASCIIBytesWithResField);
+        }
 
         private ASCIIMessage GetASCIIMessageObj() => new ASCIIMessage
         {

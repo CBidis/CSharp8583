@@ -76,6 +76,8 @@ namespace CSharp8583.Extensions
 
         internal static byte[] BuildCustomFieldLentgh(this IsoFieldAttribute isoFieldAttribute, string lenValue)
         {
+            lenValue = lenValue.PadLeft((int)isoFieldAttribute.LengthType, '0');
+
             switch (isoFieldAttribute.LenDataType)
             {
                 case DataType.ASCII:
