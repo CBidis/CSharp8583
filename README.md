@@ -74,7 +74,7 @@ for example,
 
 Iso8583 _iso8583 = new Iso8583();
 
-ASCIIMessage = new ASCIIMessage
+ASCIIMessage asciiMessage = new ASCIIMessage
         {
             Field4 = "000000004444",
             Field11 = "000021",
