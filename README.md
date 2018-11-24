@@ -20,7 +20,7 @@ In order to use the library for build/parse of Iso Messages you need to create y
 BaseMessage class
 ```
 
-and use Annotations in order to mark the properties of the ISO Message, currently supported types for Properties are byte[], string, CustomField.
+and use Annotations in order to mark the properties of the ISO Message, currently supported types for Properties are byte[], string, CustomField and Enums.
 
 for example,
 
@@ -57,6 +57,14 @@ for example,
 
         [IsoField(position: IsoFields.F73, maxLen: 6, lengthType: LengthType.FIXED, contentType: ContentType.ANS)]
         public string Field73 { get; set; }
+    }
+    
+    public enum ResponseCodes
+    {
+        [EnumIsoValue("00")]
+        Success,
+        [EnumIsoValue("96")]
+        Error
     }
 
 ```
