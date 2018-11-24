@@ -104,7 +104,7 @@ ASCIIMessage asciiMessage = new ASCIIMessage
             Field42 = "000000000111111"
         };
 
-var messageBytes = _iso8583.Build(asciiMessage, "0100", IsoFields.F39);
+var messageBytes = _iso8583.Build<ASCIIMessage>(asciiMessage, "0100", IsoFields.F39);
 
 ```
 
@@ -113,7 +113,7 @@ var messageBytes = _iso8583.Build(asciiMessage, "0100", IsoFields.F39);
 ```csharp
 
 Iso8583 _iso8583 = new Iso8583();
-ASCIIMessage asciiMessage = _iso8583.Parse<ASCIIMessage>(messageByteArray);
+ASCIIMessage asciiMessage = _iso8583.Parse<ASCIIMessage>(messageBytes);
 
 ```
 
