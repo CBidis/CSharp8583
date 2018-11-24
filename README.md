@@ -20,7 +20,7 @@ In order to use the library for build/parse of Iso Messages you need to create y
 BaseMessage class
 ```
 
-and use Annotations in order to mark the Fields of the ISO Message.
+and use Annotations in order to mark the properties of the ISO Message, currently supported types for Properties are byte[], string, CustomField.
 
 for example,
 
