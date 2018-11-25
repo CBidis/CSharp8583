@@ -2,6 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageProjectUrl>https://github.com/CBidis/CSharp8583</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/CBidis/CSharp8583/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/CBidis/CSharp8583</RepositoryUrl>
+    <Authors>Christos Charalampidis (CBidis)</Authors>
+    <PackageTags>ISO8583,8583,ISO,CSharp8583</PackageTags>
+    <PackageReleaseNotes />
+    <Description>The CSharp8583 Library is a C# implementation of the ISO-8583 Protocol as a .NET Standard 2.0 Library.</Description>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
