@@ -119,7 +119,7 @@ ASCIIMessage asciiMessage = _iso8583.Parse<ASCIIMessage>(messageBytes);
 
 #### HOW_TO_USE With messages containing reserved fields ####
 
-A common case with ISO Messages is to make use of reserved fields (F63) in order to provide additional to data. The reserved fields usually follow the Patterns of TLV(Tag - Length - Value) or LTV (Length - Tag - Value).
+A common case with ISO Messages is to make use of reserved fields (F63) in order to provide additional data. The reserved fields usually follow the Patterns of TLV(Tag - Length - Value) or LTV (Length - Tag - Value).
 
 In order to use the Library with reserved Fields in the Message class you need to create a property that derives from the CustomField class.
 
