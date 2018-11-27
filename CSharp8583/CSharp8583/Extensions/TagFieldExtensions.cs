@@ -92,7 +92,7 @@ namespace CSharp8583.Extensions
                 switch (tagAttr.DataType)
                 {
                     case DataType.BIN:
-                        fieldValue = fieldBytes.Skip(currentPos).Take(fieldLen).ToBinaryString();
+                        fieldValue = fieldBytes.Skip(currentPos).Take(fieldLen).ToStringFromBinary();
                         currentPos = currentPos + fieldLen;
                         break;
                     case DataType.ASCII:
@@ -163,7 +163,8 @@ namespace CSharp8583.Extensions
                 switch (tagAttr.DataType)
                 {
                     case DataType.BIN:
-                        throw new NotImplementedException();
+                        tagFieldBytes.AddRange(tagValue.ToBinaryStringFromHex().ToBytesFromBinaryString());
+                        break;
                     case DataType.BCD:
                         var bcdValue = tagValue.ConvertToBinaryCodedDecimal(false);
                         tagFieldBytes.AddRange(bcdValue);

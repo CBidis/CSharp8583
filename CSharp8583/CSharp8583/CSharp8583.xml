@@ -1,0 +1,1396 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CSharp8583</name>
+    </assembly>
+    <members>
+        <member name="T:CSharp8583.Attributes.EnumIsoValueAttribute">
+            <summary>
+            Used as an Annotation to Enums and specifies the Value that will be used during the ISO Parsing/Building
+            </summary>
+        </member>
+        <member name="M:CSharp8583.Attributes.EnumIsoValueAttribute.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="value">value for the Iso field</param>
+        </member>
+        <member name="P:CSharp8583.Attributes.EnumIsoValueAttribute.Value">
+            <summary>
+            Value
+            </summary>
+        </member>
+        <member name="T:CSharp8583.Attributes.IsoFieldAttribute">
+            <summary>
+            Used to Decorate properties of POCOs
+            </summary>
+        </member>
+        <member name="M:CSharp8583.Attributes.IsoFieldAttribute.#ctor(CSharp8583.Common.IsoFields,System.Int32,CSharp8583.Common.LengthType,CSharp8583.Common.ContentType,CSharp8583.Common.DataType,CSharp8583.Common.DataType,CSharp8583.Common.EncodingType)">
+            <summary>
+            Common Constructor of Iso Field
+            </summary>
+            <param name="position">position of Field</param>
+            <param name="maxLen">max Len of Field value</param>
+            <param name="lengthType">length Type</param>
+            <param name="contentType">content type</param>
+            <param name="dataType">data type</param>
+            <param name="lenDataType">length data type</param>
+            <param name="encoding">Encoding type in case that the bytes are not in Common ASCII char set</param>
+        </member>
+        <member name="P:CSharp8583.Attributes.IsoFieldAttribute.Position">
+            <summary>
+            Iso Field Number
+            </summary>
+        </member>
+        <member name="P:CSharp8583.Attributes.IsoFieldAttribute.MaxLen">
+            <summary>
+            Iso Field Number
+            </summary>
+        </member>
+        <member name="P:CSharp8583.Attributes.IsoFieldAttribute.LengthType">
+            <summary>
+            Length Type of Field
+            </summary>
+        </member>
+        <member name="P:CSharp8583.Attributes.IsoFieldAttribute.ContentType">
+            <summary>
+            Content Type of Field
+            </summary>
+        </member>
+        <member name="P:CSharp8583.Attributes.IsoFieldAttribute.DataType">
+            <summary>
+            Data Type of Field
+            </summary>
+        </member>
+        <member name="P:CSharp8583.Attributes.IsoFieldAttribute.LenDataType">
+            <summary>
+            Len Data Type of Field
+            </summary>
+        </member>
+        <member name="P:CSharp8583.Attributes.IsoFieldAttribute.Encoding">
+            <summary>
+            Encoding
+            </summary>
+        </member>
+        <member name="T:CSharp8583.Attributes.TagAttribute">
+            <summary>
+            Used To Decorate Properties for Reserved Fields Parsing
+            </summary>
+        </member>
+        <member name="M:CSharp8583.Attributes.TagAttribute.#ctor(System.Int32,System.String,System.Int32,System.Boolean,CSharp8583.Common.DataType,CSharp8583.Common.DataType,CSharp8583.Common.EncodingType)">
+            <summary>
+            Constructor of Tag Field Value
+            </summary>
+            <param name="position">position in TLV</param>
+            <param name="tagName">tag value name</param>
+            <param name="lenBytesLen">number of bytes to parse for Length</param>
+            <param name="isTlv">whether is TLV (Tag Lentgh Value) or LTV (Lentgh Tag Value)</param>
+            <param name="dataType">datatype of Value</param>
+            <param name="lenDataType">datatype of lentgh value</param>
+            <param name="encoding">Encoding type in case that the bytes are not in Common ASCII char set</param>
+        </member>
+        <member name="P:CSharp8583.Attributes.TagAttribute.Position">
+            <summary>
+            Tag Position
+            </summary>
+        </member>
+        <member name="P:CSharp8583.Attributes.TagAttribute.TagName">
+            <summary>
+            Tag Name Value
+            </summary>
+        </member>
+        <member name="P:CSharp8583.Attributes.TagAttribute.LenBytesLen">
+            <summary>
+            Lentgh of Length Bytes
+            </summary>
+        </member>
+        <member name="P:CSharp8583.Attributes.TagAttribute.DataType">
+            <summary>
+            Data Type of Field
+            </summary>
+        </member>
+        <member name="P:CSharp8583.Attributes.TagAttribute.LenDataType">
+            <summary>
+            Len Data Type of Field
+            </summary>
+        </member>
+        <member name="P:CSharp8583.Attributes.TagAttribute.Encoding">
+            <summary>
+            Encoding
+            </summary>
+        </member>
+        <member name="P:CSharp8583.Attributes.TagAttribute.IsTLV">
+            <summary>
+            IsTLV
+            </summary>
+        </member>
+        <member name="T:CSharp8583.Common.DataType">
+            <summary>
+            Binary Data Format Representation
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.DataType.BCD">
+            <summary>
+            BCD Formatted Values
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.DataType.ASCII">
+            <summary>
+            ASCII Values
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.DataType.BIN">
+            <summary>
+            Binary Formatted Values, currently supports Conversion for Base 16 Numbers
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.DataType.HEX">
+            <summary>
+            Hexadecimal Values
+            </summary>
+        </member>
+        <member name="T:CSharp8583.Common.EncodingType">
+            <summary>
+            Encoding Types for Parse/Building of byte data  
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.EncodingType.None">
+            <summary>
+            Common ASCII
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.EncodingType.Western_European">
+            <summary>
+            Western European (ISO)
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.EncodingType.Central_European">
+            <summary>
+            Central European (ISO)
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.EncodingType.Latin">
+            <summary>
+            Latin 3 (ISO)
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.EncodingType.Baltic">
+            <summary>
+            Baltic (ISO)
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.EncodingType.Cyrillic">
+            <summary>
+            Cyrillic (ISO)  
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.EncodingType.Arabic">
+            <summary>
+            Arabic (ISO)
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.EncodingType.Greek">
+            <summary>
+            Greek (ISO)
+            </summary>
+        </member>
+        <member name="T:CSharp8583.Common.ContentType">
+            <summary>
+            Data Types Values
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.ContentType.A">
+            <summary>
+            Alpha, including blanks
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.ContentType.N">
+            <summary>
+            Numeric values only
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.ContentType.S">
+            <summary>
+            Special characters only
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.ContentType.AN">
+            <summary>
+            Alphanumeric
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.ContentType.AS">
+            <summary>
+            Alpha and special characters only
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.ContentType.ANS">
+            <summary>
+            Alphabetic, numeric and special characters
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.ContentType.B">
+            <summary>
+            Binary data
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.ContentType.Z">
+            <summary>
+            Tracks 2 and 3 code set as defined in ISO/IEC 7813 and ISO/IEC 4909 respectively
+            </summary>
+        </member>
+        <member name="T:CSharp8583.Common.LengthType">
+            <summary>
+            Length type Available Values
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.LengthType.FIXED">
+            <summary>
+            Fixed length field of six digits
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.LengthType.LVAR">
+            <summary>
+            LVAR numeric field of up to 6 digits in length
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.LengthType.LLVAR">
+            <summary>
+            LLVAR alpha field of up to 11 characters in length
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.LengthType.LLLVAR">
+            <summary>
+            LLLVAR binary field of up to 999 bits in length
+            </summary>
+        </member>
+        <member name="T:CSharp8583.Common.IsoFields">
+            <summary>
+            All Defined ISO Fields, as F(Number)
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.MTI">
+            <summary>
+            Starting Field of ISO Message
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.BitMap">
+            <summary>
+            Bitmap
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F1">
+            <summary>
+             Secondary Bitmap
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F2">
+            <summary>
+             Primary account number (PAN)
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F3">
+            <summary>
+             Processing code
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F4">
+            <summary>
+             Amount, transaction
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F5">
+            <summary>
+             Amount, settlement
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F6">
+            <summary>
+             Amount, cardholder billing
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F7">
+            <summary>
+             Transmission date and time
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F8">
+            <summary>
+             Amount, cardholder billing fee
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F9">
+            <summary>
+             Conversion rate, settlement
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F10">
+            <summary>
+             Conversion rate, cardholder billing
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F11">
+            <summary>
+             System trace audit number
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F12">
+            <summary>
+             Time, local transaction (hhmmss)
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F13">
+            <summary>
+             Date, local transaction (MMDD)
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F14">
+            <summary>
+             Date, expiration
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F15">
+            <summary>
+             Date, Settlement
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F16">
+            <summary>
+             Date, conversion
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F17">
+            <summary>
+             Date, capture
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F18">
+            <summary>
+             Merchant type
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F19">
+            <summary>
+             Acquiring institution country code
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F20">
+            <summary>
+             PAN extended, country code
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F21">
+            <summary>
+             Forwarding institution. country code
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F22">
+            <summary>
+             Point of service entry mode
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F23">
+            <summary>
+             Application PAN sequence number
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F24">
+            <summary>
+             Network International identifier (NII)
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F25">
+            <summary>
+             Point of service entry mode
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F26">
+            <summary>
+            Point of service capture code
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F27">
+            <summary>
+            Authorizing identification response length
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F28">
+            <summary>
+            Amount, transaction fee
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F29">
+            <summary>
+            Amount, settlement fee
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F30">
+            <summary>
+            Amount, transaction processing fee
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F31">
+            <summary>
+            Amount, settlement processing fee
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F32">
+            <summary>
+            Acquiring institution identification code
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F33">
+            <summary>
+            Forwarding institution identification code
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F34">
+            <summary>
+            Primary account number, extended
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F35">
+            <summary>
+            Track 2 data
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F36">
+            <summary>
+            Track 3 data
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F37">
+            <summary>
+            Retrieval reference number
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F38">
+            <summary>
+            Authorization identification response
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F39">
+            <summary>
+            Response code
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F40">
+            <summary>
+            Service restriction code
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F41">
+            <summary>
+            Card acceptor terminal identification
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F42">
+            <summary>
+            Card acceptor identification code
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F43">
+            <summary>
+            Card acceptor name/location
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F44">
+            <summary>
+            Additional response data
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F45">
+            <summary>
+            Track1
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F46">
+            <summary>
+            Additional response data
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F47">
+            <summary>
+            Additional data - national
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F48">
+            <summary>
+            Additional data - Private
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F49">
+            <summary>
+            Currency code, transaction
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F50">
+            <summary>
+            Currency code, settlement
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F51">
+            <summary>
+            Currency code, cardholder billing
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F52">
+            <summary>
+            Personal identification number data
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F53">
+            <summary>
+            Security related control information
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F54">
+            <summary>
+            Additional amounts
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F55">
+            <summary>
+            Reserved ISO
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F56">
+            <summary>
+            Reserved ISO
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F57">
+            <summary>
+            Reserved national
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F58">
+            <summary>
+            Reserved national
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F59">
+            <summary>
+            Reserved national
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F60">
+            <summary>
+            Reserved national
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F61">
+            <summary>
+            Reserved private
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F62">
+            <summary>
+            Reserved private
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F63">
+            <summary>
+            Reserved private
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F64">
+            <summary>
+            Message authentication code (MAC)
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F65">
+            <summary>
+            Bitmap, extended
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F66">
+            <summary>
+            Settlement code
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F67">
+            <summary>
+            Extended payment code
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F68">
+            <summary>
+            Receiving institution country code
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F69">
+            <summary>
+            Settlement institution country code
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F70">
+            <summary>
+            Network management information code
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F71">
+            <summary>
+            Message number
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F72">
+            <summary>
+            Message number, last
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F73">
+            <summary>
+            Date, action (YYMMDD)
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F74">
+            <summary>
+            Credits, number
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F75">
+            <summary>
+            Credits, reversal number
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F76">
+            <summary>
+            Debits, number
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F77">
+            <summary>
+            Debits, reversal number
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F78">
+            <summary>
+            Transfer number
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F79">
+            <summary>
+            Transfer, reversal number
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F80">
+            <summary>
+            Inquiries number
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F81">
+            <summary>
+            Authorizations, number
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F82">
+            <summary>
+            Credits, processing fee amount
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F83">
+            <summary>
+            Credits, transaction fee amount
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F84">
+            <summary>
+            Debits, processing fee amount
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F85">
+            <summary>
+            Debits, transaction fee amount
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F86">
+            <summary>
+            Credits, amount
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F87">
+            <summary>
+            Credits, reversal amount
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F88">
+            <summary>
+            Debits, amount
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F89">
+            <summary>
+            Debits, reversal amount
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F90">
+            <summary>
+            Original data elements
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F91">
+            <summary>
+            File update code
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F92">
+            <summary>
+            File security code
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F93">
+            <summary>
+            Response indicator
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F94">
+            <summary>
+            Service indicator
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F95">
+            <summary>
+            Replacement amounts
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F96">
+            <summary>
+            Message security code
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F97">
+            <summary>
+            Amount, net settlement
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F98">
+            <summary>
+            Payee
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F99">
+            <summary>
+            Settlement institution identification code
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F100">
+            <summary>
+            Receiving institution identification code
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F101">
+            <summary>
+            File name
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F102">
+            <summary>
+            Account identification 1
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F103">
+            <summary>
+            Account identification 2
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F104">
+            <summary>
+            Transaction description
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F105">
+            <summary>
+            Reserved for ISO use
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F106">
+            <summary>
+            Reserved for ISO use
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F107">
+            <summary>
+            Reserved for ISO use
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F108">
+            <summary>
+            Reserved for ISO use
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F109">
+            <summary>
+            Reserved for ISO use
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F110">
+            <summary>
+            Reserved for ISO use
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F111">
+            <summary>
+            Reserved for ISO use
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F112">
+            <summary>
+            Reserved for national use
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F113">
+            <summary>
+            Reserved for national use
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F114">
+            <summary>
+            Reserved for national use
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F115">
+            <summary>
+            Reserved for national use
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F116">
+            <summary>
+            Reserved for national use
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F117">
+            <summary>
+            Reserved for national use
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F118">
+            <summary>
+            Reserved for national use
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F119">
+            <summary>
+            Reserved for national use
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F120">
+            <summary>
+            Reserved for private use
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F121">
+            <summary>
+            Reserved for private use
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F122">
+            <summary>
+            Reserved for private use
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F123">
+            <summary>
+            Reserved for private use
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F124">
+            <summary>
+            Reserved for private use
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F125">
+            <summary>
+            Reserved for private use
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F126">
+            <summary>
+            Reserved for private use
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F127">
+            <summary>
+            Reserved for private use
+            </summary>
+        </member>
+        <member name="F:CSharp8583.Common.IsoFields.F128">
+            <summary>
+            Message authentication code
+            </summary>
+        </member>
+        <member name="T:CSharp8583.Common.Utils">
+            <summary>
+            Contains Shared Utils Methods
+            </summary>
+        </member>
+        <member name="M:CSharp8583.Common.Utils.SetValueToInstance(System.Object,System.Reflection.PropertyInfo,System.String)">
+            <summary>
+            Validates the Underlyning Type and Sets the Corresponding Type
+            </summary>
+            <param name="instance">instance to set values</param>
+            <param name="prop">prop info of Instance</param>
+            <param name="value">value to set</param>
+        </member>
+        <member name="M:CSharp8583.Common.Utils.GetValueFromInstance(System.Object,System.Reflection.PropertyInfo)">
+            <summary>
+            Get the object value for the ISO Field
+            </summary>
+            <param name="instance">instance to get value</param>
+            <param name="prop">prop info of Instance</param>
+            <returns>value for ISO  Field</returns>
+        </member>
+        <member name="T:CSharp8583.Exceptions.BuildFieldException">
+            <summary>
+            Exception thrown in case of a Build Field Error
+            </summary>
+        </member>
+        <member name="M:CSharp8583.Exceptions.BuildFieldException.#ctor(CSharp8583.Attributes.IsoFieldAttribute,System.String)">
+            <summary>
+            Contructor of Exception
+            </summary>
+            <param name="isoFieldAttr">iso field Attribute</param>
+            <param name="exMessage">error message</param>
+        </member>
+        <member name="M:CSharp8583.Exceptions.BuildFieldException.#ctor(CSharp8583.Attributes.IsoFieldAttribute,System.String,System.Exception)">
+            <summary>
+            Contructor of Exception
+            </summary>
+            <param name="isoFieldAttr">iso field Attribute</param>
+            <param name="innerEx">Inner exception details</param>
+            <param name="exMessage">error message</param>
+        </member>
+        <member name="P:CSharp8583.Exceptions.BuildFieldException.IsoFieldData">
+            <summary>
+            Iso Field Data
+            </summary>
+        </member>
+        <member name="T:CSharp8583.Exceptions.BuildTagException">
+            <summary>
+            Thrown when we cannot build the byte Data of the Tag Field
+            </summary>
+        </member>
+        <member name="M:CSharp8583.Exceptions.BuildTagException.#ctor(CSharp8583.Attributes.TagAttribute,System.String)">
+            <summary>
+            Contructor of Exception
+            </summary>
+            <param name="tagAttr">Tag Attribute Data</param>
+            <param name="exMessage">error message</param>
+        </member>
+        <member name="M:CSharp8583.Exceptions.BuildTagException.#ctor(CSharp8583.Attributes.TagAttribute,System.String,System.Exception)">
+            <summary>
+            Contructor of Exception
+            </summary>
+            <param name="tagAttr">Tag Attribute Data</param>
+            <param name="innerEx">Inner exception details</param>
+            <param name="exMessage">error message</param>
+        </member>
+        <member name="P:CSharp8583.Exceptions.BuildTagException.TagData">
+            <summary>
+            Iso Field Data
+            </summary>
+        </member>
+        <member name="T:CSharp8583.Exceptions.ParseFieldException">
+            <summary>
+            Indicates the Error During the Parsing of the field
+            </summary>
+        </member>
+        <member name="M:CSharp8583.Exceptions.ParseFieldException.#ctor(CSharp8583.Attributes.IsoFieldAttribute,System.String)">
+            <summary>
+            Contructor of Exception
+            </summary>
+            <param name="isoFieldAttr">iso field Attribute</param>
+            <param name="exMessage">error message</param>
+        </member>
+        <member name="M:CSharp8583.Exceptions.ParseFieldException.#ctor(CSharp8583.Attributes.IsoFieldAttribute,System.String,System.Exception)">
+            <summary>
+            Contructor of Exception
+            </summary>
+            <param name="isoFieldAttr">iso field Attribute</param>
+            <param name="innerEx">Inner exception details</param>
+            <param name="exMessage">error message</param>
+        </member>
+        <member name="P:CSharp8583.Exceptions.ParseFieldException.IsoFieldData">
+            <summary>
+            Iso Field Data
+            </summary>
+        </member>
+        <member name="T:CSharp8583.Exceptions.ParseTagException">
+            <summary>
+            Indicates the Error During the Parsing of the field
+            </summary>
+        </member>
+        <member name="M:CSharp8583.Exceptions.ParseTagException.#ctor(CSharp8583.Attributes.TagAttribute,System.String)">
+            <summary>
+            Contructor of Exception
+            </summary>
+            <param name="tagAttr">Tag Attribute Data</param>
+            <param name="exMessage">error message</param>
+        </member>
+        <member name="M:CSharp8583.Exceptions.ParseTagException.#ctor(CSharp8583.Attributes.TagAttribute,System.String,System.Exception)">
+            <summary>
+            Contructor of Exception
+            </summary>
+            <param name="tagAttr">Tag Attribute Data</param>
+            <param name="innerEx">Inner exception details</param>
+            <param name="exMessage">error message</param>
+        </member>
+        <member name="P:CSharp8583.Exceptions.ParseTagException.TagData">
+            <summary>
+            Iso Field Data
+            </summary>
+        </member>
+        <member name="T:CSharp8583.Extensions.ConversionExtensions">
+            <summary>
+            Contains Common Conversion Extensions
+            For BCD check --> https://gist.github.com/neuro-sys/953548
+            </summary>
+        </member>
+        <member name="M:CSharp8583.Extensions.ConversionExtensions.ToHexString(System.Collections.Generic.IEnumerable{System.Byte})">
+            <summary>
+            Converts Byte Array to HEX string representation
+            </summary>
+            <param name="hexBytes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CSharp8583.Extensions.ConversionExtensions.BDCToString(System.Byte[])">
+            <summary>
+            Converts Byte array of BCD Bytes to Int Source
+            </summary>
+            <param name="bcdBytes">bcd bytes</param>
+            <returns>int representation</returns>
+        </member>
+        <member name="M:CSharp8583.Extensions.ConversionExtensions.BCDtoString(System.Byte)">
+            <summary>
+            Converts Byte to BCD String Representation
+            </summary>
+            <param name="bcd">bcd byte</param>
+            <returns>String of BCD Byte</returns>
+        </member>
+        <member name="M:CSharp8583.Extensions.ConversionExtensions.IntToBCD(System.Int64)">
+            <summary>
+            Converts Int Value to BCD Bytes, /// Another Example Source : https://gist.github.com/Pellared/7d61fdb2dc9a9799dfc8
+            </summary>
+            <param name="intValue">int value</param>
+            <returns>BCD Bytes</returns>
+        </member>
+        <member name="M:CSharp8583.Extensions.ConversionExtensions.ConvertToBinaryCodedDecimal(System.String,System.Boolean,System.Int32)">
+            <summary>
+            Converts string BCD Value to BCD Bytes
+            </summary>
+            <param name="bcdString">bcd string value</param>
+            <param name="isLittleEndian">isLittleIndian or BigIndian</param>
+            <param name="bytesLen">number of bytes to create</param>
+            <returns></returns>
+        </member>
+        <member name="M:CSharp8583.Extensions.ConversionExtensions.IntToHexValue(System.Int32,System.Int32)">
+            <summary>
+            Converts Int Value to Hex Value
+            </summary>
+            <param name="intValue">Int value</param>
+            <param name="padLength">pad length with zeroes</param>
+            <returns>string hex value</returns>
+        </member>
+        <member name="M:CSharp8583.Extensions.ConversionExtensions.HexValueToInt(System.String)">
+            <summary>
+            Converts Hex Value to Int
+            </summary>
+            <param name="hexValue">hex value</param>
+            <returns>int value</returns>
+        </member>
+        <member name="M:CSharp8583.Extensions.ConversionExtensions.ToStringFromBinary(System.Collections.Generic.IEnumerable{System.Byte})">
+            <summary>
+            Converts Bytes to Human String Representation
+            </summary>
+            <param name="bytes">bytes to convert</param>
+            <returns>Binary String</returns>
+        </member>
+        <member name="M:CSharp8583.Extensions.ConversionExtensions.ToBinaryStringFromHex(System.String)">
+            <summary>
+            Converts Hexadeimal Values to Binary String of Bits
+            </summary>
+            <param name="hexString">hex values string</param>
+            <returns>Binary String</returns>
+        </member>
+        <member name="M:CSharp8583.Extensions.ConversionExtensions.ToBytesFromBinaryString(System.String)">
+            <summary>
+            Converts Binary String to Bytes (8 Bits = 1 Byte)
+            </summary>
+            <param name="bitString">bit string representation</param>
+            <returns>bytes of data</returns>
+        </member>
+        <member name="M:CSharp8583.Extensions.ConversionExtensions.HexStringToString(System.String)">
+            <summary>
+            Converts Hex string to string Representation
+            </summary>
+            <param name="hexString">HEX string Data</param>
+            <returns>string representation</returns>
+        </member>
+        <member name="M:CSharp8583.Extensions.ConversionExtensions.ToASCIIString(System.Collections.Generic.IEnumerable{System.Byte},CSharp8583.Common.EncodingType)">
+            <summary>
+            Converts bytes to ASCII representation according to given encoding
+            </summary>
+            <param name="bytes">bytes to convert</param>
+            <param name="encoding">encoding of Bytes</param>
+            <returns>ASCII String</returns>
+        </member>
+        <member name="M:CSharp8583.Extensions.ConversionExtensions.FromASCIIToBytes(System.String,CSharp8583.Common.EncodingType)">
+            <summary>
+            Converts ASCII Data to bytes according to given encoding
+            </summary>
+            <param name="asciiData">ascii data</param>
+            <param name="encoding">encoding of Bytes</param>
+            <returns>ascii data bytes</returns>
+        </member>
+        <member name="M:CSharp8583.Extensions.ConversionExtensions.HexBytesToString(System.Collections.Generic.IEnumerable{System.Byte})">
+            <summary>
+            Converts Hex Bytes to string Representation
+            </summary>
+            <param name="bytes">hex bytes</param>
+            <returns>string representation</returns>
+        </member>
+        <member name="M:CSharp8583.Extensions.ConversionExtensions.Deconstruct``2(System.Collections.Generic.KeyValuePair{``0,``1},``0@,``1@)">
+            <summary>
+            Deconstructor Extension method for Key/Value Pairs
+            </summary>
+            <typeparam name="T1"></typeparam>
+            <typeparam name="T2"></typeparam>
+            <param name="tuple"></param>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="T:CSharp8583.Extensions.EnumExtensions">
+            <summary>
+            Contains Enum Extensions
+            </summary>
+        </member>
+        <member name="M:CSharp8583.Extensions.EnumExtensions.GetEnumDescription(System.Enum)">
+            <summary>
+            Get Iso Value of Enum
+            </summary>
+            <param name="value">enum value</param>
+            <returns>description value</returns>
+        </member>
+        <member name="M:CSharp8583.Extensions.EnumExtensions.GetValueFromDescription(System.Type,System.String)">
+            <summary>
+            retrieve enum value from EnumIsoValueAttribute
+            </summary>
+            <param name="enumType">enum Type</param>
+            <param name="description">description value</param>
+            <returns>enum value</returns>
+        </member>
+        <member name="T:CSharp8583.Extensions.IsoExtensions">
+            <summary>
+            Contains Functions required for Parsing/Building ISO Messages
+            </summary>
+        </member>
+        <member name="M:CSharp8583.Extensions.IsoExtensions.PropsAndIsoFieldAttributes``1(System.Type)">
+            <summary>
+            Retrieves all IsoField Attributes and Properties of TMessage Class
+            </summary>
+            <typeparam name="TMessage">TMessage</typeparam>
+            <param name="messageType">message type</param>
+            <returns>A Dictionary of TMessage Properties and IsoField Attributes of TMessage Class</returns>
+        </member>
+        <member name="M:CSharp8583.Extensions.IsoExtensions.TagFieldLength(CSharp8583.Attributes.IsoFieldAttribute,System.Byte[],System.Int32@)">
+            <summary>
+            Gets Custom Field Len according to Len Bytes
+            </summary>
+            <param name="isoFieldAttribute">iso Field Attribute</param>
+            <param name="isoMessageBytes">iso message bytes</param>
+            <param name="currentPos">current parsing position</param>
+            <returns>length of Custom Field parsed</returns>
+        </member>
+        <member name="M:CSharp8583.Extensions.IsoExtensions.GetFieldValue(CSharp8583.Attributes.IsoFieldAttribute,System.Byte[],System.Int32@)">
+            <summary>
+            Parses bytes value to an object value
+            </summary>
+            <param name="isoFieldAttribute">iso Field Attribute</param>
+            <param name="isoMessageBytes">whole Message bytes</param>
+            <param name="currentPos">current Position of Parsed Message bytes, passed as a Reference</param>
+            <returns>field object value</returns>
+        </member>
+        <member name="M:CSharp8583.Extensions.IsoExtensions.BuildFieldValue(CSharp8583.Attributes.IsoFieldAttribute,System.String)">
+            <summary>
+            Build Bytes from Field Value
+            </summary>
+            <param name="isoFieldAttribute">isofield attribute of Property</param>
+            <param name="fieldValue">field value</param>
+            <returns>byte array value of Field</returns>
+        </member>
+        <member name="T:CSharp8583.Extensions.TagFieldExtensions">
+            <summary>
+            Extension Methods for Tag Fields Parsing
+            </summary>
+        </member>
+        <member name="M:CSharp8583.Extensions.TagFieldExtensions.PropsAndTagsdAttributes``1(System.Type)">
+            <summary>
+            Retrieves all Tag Fields of TField Instance
+            </summary>
+            <typeparam name="TField">TField type as derived class from CustomField</typeparam>
+            <param name="fieldType">type of Field</param>
+            <returns>A Dictionary of TField Properties and TField Attributes of TField Class</returns>
+        </member>
+        <member name="M:CSharp8583.Extensions.TagFieldExtensions.GetTagValue(CSharp8583.Attributes.TagAttribute,System.Byte[],System.Int32@)">
+            <summary>
+            Get Tag Value of Custom Field
+            </summary>
+            <param name="tagAttr">TagAttribute Data</param>
+            <param name="fieldBytes">bytes of Custom Field</param>
+            <param name="currentPos">current position</param>
+            <returns>Tag Name and Tag Value Tuple</returns>
+        </member>
+        <member name="T:CSharp8583.Iso8583">
+            <summary>
+            Used to Build/Parse Iso Messages
+            </summary>
+        </member>
+        <member name="M:CSharp8583.Iso8583.Parse``1(System.Byte[])">
+            <summary>
+            Parse a byte[] iso Message to an Instance of TMessage
+            </summary>
+            <typeparam name="TMessage">TMessage class, a derived class of BaseMessage class</typeparam>
+            <param name="isoMessageBytes">bytes of received Message</param>
+            <returns>an Instance of TMessage</returns>
+        </member>
+        <member name="M:CSharp8583.Iso8583.ParseBitMap``1(``0,System.Byte[],System.Int32@)">
+            <summary>
+            Parse BitMap of Message to be Parsed
+            </summary>
+            <typeparam name="TMessage">TMessage class, a derived class of BaseMessage class</typeparam>
+            <param name="message">message instance</param>
+            <param name="isoMessageBytes">messageBytes</param>
+            <param name="currentPos">position to Read</param>
+            <returns>BitMap Value</returns>
+        </member>
+        <member name="M:CSharp8583.Iso8583.Build``1(``0,System.String,CSharp8583.Common.IsoFields[])">
+            <summary>
+            Builds Byte[] from Instance of Message
+            </summary>
+            <typeparam name="TMessage">TMessage class, a derived class of BaseMessage class</typeparam>
+            <param name="message">message instance</param>
+            <param name="MTI">MTI Response value</param>
+            <param name="notIncludeFields">whether the BitMap will Contain Fields without values</param>
+            <returns>byte array Iso Message</returns>
+        </member>
+        <member name="M:CSharp8583.Iso8583.BuildBitMap``1(``0,System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            Builds BitMap value of Message to Send
+            </summary>
+            <typeparam name="TMessage">TMessage class, a derived class of BaseMessage class</typeparam>
+            <param name="message">message instance</param>
+            <param name="orderedFields">ordered fields positions</param>
+            <returns>byte array bitMap value</returns>
+        </member>
+        <member name="M:CSharp8583.Iso8583.ParseFields``1(``0@,System.Byte[],System.Int32)">
+            <summary>
+            Parse Fields and Assign Values according to BitMap Value
+            </summary>
+            <typeparam name="TMessage">TMessage class, a derived class of BaseMessage class</typeparam>
+            <param name="message">message to set values of ISO Message</param>
+            <param name="isoMessageBytes">bytes of received Message</param>
+            <param name="startPosition">position of byte Array message</param>
+        </member>
+        <member name="M:CSharp8583.Iso8583.BuildFields``1(System.Collections.Generic.IEnumerable{System.Int32},``0,System.Collections.Generic.List{System.Byte}@)">
+            <summary>
+            Adds message bytes the rest of the Fields
+            </summary>
+            <typeparam name="TMessage">TMessage class, a derived class of BaseMessage class</typeparam>
+            <param name="orderedFieldPositions">fields that need to be builded</param>
+            <param name="message">message instance</param>
+            <param name="messageBytes">message bytes as Ref</param>
+        </member>
+        <member name="T:CSharp8583.Messages.BaseMessage">
+            <summary>
+            Used As Base Class Message
+            </summary>
+        </member>
+        <member name="P:CSharp8583.Messages.BaseMessage.MessagePropsIsoFieldAttributes">
+            <summary>
+            Properties with ISO Fields Attributes
+            </summary>
+        </member>
+        <member name="M:CSharp8583.Messages.BaseMessage.#ctor">
+            <summary>
+            Common Constructor
+            </summary>
+        </member>
+        <member name="P:CSharp8583.Messages.BaseMessage.MTI">
+            <summary>
+            All Messages contain an MTI
+            </summary>
+        </member>
+        <member name="P:CSharp8583.Messages.BaseMessage.BitMap">
+            <summary>
+            All Messages contain a BitMap, Binary Representation
+            </summary>
+        </member>
+        <member name="P:CSharp8583.Messages.BaseMessage.BinaryBitMap">
+            <summary>
+            Binary representation of BitMap
+            </summary>
+        </member>
+        <member name="M:CSharp8583.Messages.BaseMessage.GetDumpedMessage(System.Func{CSharp8583.Common.IsoFields,System.String,System.String})">
+            <summary>
+            Creates a Formatted Dump of the Generated Message
+            </summary>
+            <param name="isoFieldFormatters">(optional) A function that will format the specified ISO Field Values</param>
+            <returns>string formatted dump</returns>
+        </member>
+        <member name="M:CSharp8583.Messages.BaseMessage.GetPropAndFieldAttrByPos(System.Int32)">
+            <summary>
+            Retrieve KeyValue Pair of Prop and Each ISO Field Attr by Field Position
+            </summary>
+            <param name="bitPosition">field position</param>
+            <returns>KeyValue Pair of Prop and Each ISO Field</returns>
+        </member>
+        <member name="M:CSharp8583.Messages.BaseMessage.GetIsoFieldByPropName(System.String)">
+            <summary>
+            Retrieve the Iso Field Attribute of Property
+            </summary>
+            <param name="propName">property Name</param>
+            <returns>Iso Field Attribute of Property</returns>
+        </member>
+        <member name="T:CSharp8583.Messages.CustomField">
+            <summary>
+            Contains the Fields for Custom Fields. eg Field63 etc
+            </summary>
+        </member>
+        <member name="P:CSharp8583.Messages.CustomField.TagPropsIsoFieldAttributes">
+            <summary>
+            Properties of Custom Field with Tag Attributes
+            </summary>
+        </member>
+        <member name="M:CSharp8583.Messages.CustomField.#ctor">
+            <summary>
+            Common Contructor
+            </summary>
+        </member>
+        <member name="M:CSharp8583.Messages.CustomField.GetPropByName(System.String)">
+            <summary>
+            Retrieves Instance Prop by Name
+            </summary>
+            <param name="propName">prop Name</param>
+            <returns>property</returns>
+        </member>
+        <member name="M:CSharp8583.Messages.CustomField.ParseCustomField(System.Byte[])">
+            <summary>
+            Builds Custom Field from Bytes Of Field
+            </summary>
+            <param name="fieldBytes">field bytes</param>
+            <returns>custom field Instance</returns>
+        </member>
+        <member name="M:CSharp8583.Messages.CustomField.BuildCustomField">
+            <summary>
+            Builds Field Bytes from Instance of Custom Fields
+            </summary>
+            <returns>bytes of Custom Field</returns>
+        </member>
+        <member name="M:CSharp8583.Messages.CustomField.ToString">
+            <summary>
+            Prints the Value/Tags of Of the SubField
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

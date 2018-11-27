@@ -14,7 +14,7 @@
         /// </summary>
         ASCII = 2,
         /// <summary>
-        /// Binary Formatted Values
+        /// Binary Formatted Values, currently supports Conversion for Base 16 Numbers
         /// </summary>
         BIN   = 3,
         /// <summary>

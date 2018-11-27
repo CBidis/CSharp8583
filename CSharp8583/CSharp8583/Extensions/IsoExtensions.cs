@@ -143,7 +143,7 @@ namespace CSharp8583.Extensions
                 switch (isoFieldAttribute.DataType)
                 {
                     case DataType.BIN:
-                        fieldValue = isoMessageBytes.Skip(currentPos).Take(fieldLen).ToBinaryString();
+                        fieldValue = isoMessageBytes.Skip(currentPos).Take(fieldLen).ToStringFromBinary();
                         currentPos = currentPos + fieldLen;
                         break;
                     case DataType.BCD:
@@ -219,7 +219,8 @@ namespace CSharp8583.Extensions
                 switch (isoFieldAttribute.DataType)
                 {
                     case DataType.BIN:
-                        throw new NotImplementedException();
+                        fieldBytes.AddRange(fieldValue.ToBinaryStringFromHex().ToBytesFromBinaryString());
+                        break;
                     case DataType.BCD:
                         var bcdValue = fieldValue.ConvertToBinaryCodedDecimal(false);
                         fieldBytes.AddRange(bcdValue);

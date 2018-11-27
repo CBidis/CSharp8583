@@ -183,20 +183,27 @@ namespace CSharp8583.Extensions
         public static int HexValueToInt(this string hexValue) => int.Parse(hexValue, System.Globalization.NumberStyles.HexNumber);
 
         /// <summary>
-        /// Converts Bytes to Binary String Representation
+        /// Converts Bytes to Human String Representation
         /// </summary>
         /// <param name="bytes">bytes to convert</param>
         /// <returns>Binary String</returns>
-        public static string ToBinaryString(this IEnumerable<byte> bytes) => string.Join(string.Empty,
-                                                                                 bytes.Select(x => Convert.ToString(x, 2).PadLeft(4, '0')));
+        public static string ToStringFromBinary(this IEnumerable<byte> bytes) => string.Join(string.Empty,
+                                                                                 bytes.Select(x => Convert.ToString(x, 16).PadLeft(2, '0').ToUpper()));
 
         /// <summary>
-        /// Converts Hexadeimal Values to Binary String
+        /// Converts Hexadeimal Values to Binary String of Bits
         /// </summary>
         /// <param name="hexString">hex values string</param>
         /// <returns>Binary String</returns>
         public static string ToBinaryStringFromHex(this string hexString) => string.Join(string.Empty, hexString.Select(
                                                                                 c => Convert.ToString(Convert.ToInt32(c.ToString(), 16), 2).PadLeft(4, '0')));
+        /// <summary>
+        /// Converts Binary String to Bytes (8 Bits = 1 Byte)
+        /// </summary>
+        /// <param name="bitString">bit string representation</param>
+        /// <returns>bytes of data</returns>
+        public static byte[] ToBytesFromBinaryString(this string bitString) => Enumerable.Range(0, bitString.Length / 8).Select(
+                                                                                pos => Convert.ToByte(bitString.Substring(pos * 8, 8), 2)).ToArray();
 
         /// <summary>
         /// Converts Hex string to string Representation
