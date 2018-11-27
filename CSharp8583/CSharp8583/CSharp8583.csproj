@@ -8,8 +8,11 @@
     <RepositoryUrl>https://github.com/CBidis/CSharp8583</RepositoryUrl>
     <Authors>Christos Charalampidis (CBidis)</Authors>
     <PackageTags>ISO8583,8583,ISO,CSharp8583</PackageTags>
-    <PackageReleaseNotes />
+    <PackageReleaseNotes>Added support for Binary Data Type conversions in Iso Field Attributes.</PackageReleaseNotes>
     <Description>The CSharp8583 Library is a C# implementation of the ISO-8583 Protocol as a .NET Standard 2.0 Library.</Description>
+    <AssemblyVersion>1.0.0.1</AssemblyVersion>
+    <Version>1.0.1</Version>
+    <FileVersion>1.0.1.1</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
