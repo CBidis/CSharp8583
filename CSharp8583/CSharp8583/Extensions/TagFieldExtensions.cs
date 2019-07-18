@@ -87,7 +87,7 @@ namespace CSharp8583.Extensions
                     currentPos = currentPos + 2;
                 }
                 else
-                    currentPos = currentPos + 2;
+                    currentPos = currentPos + lengthBytes;
 
                 switch (tagAttr.DataType)
                 {
@@ -141,14 +141,14 @@ namespace CSharp8583.Extensions
                 switch (tagAttr.LenDataType)
                 {
                     case DataType.ASCII:
-                        tagFieldBytes.AddRange(tagLentgh.ToString().FromASCIIToBytes(tagAttr.Encoding));
+                        tagFieldBytes.AddRange(tagLentgh.ToString().PadLeft(tagAttr.LenBytesLen,'0').FromASCIIToBytes(tagAttr.Encoding));
                         break;
                     case DataType.HEX:
-                        var intLen = int.Parse(tagLentgh.ToString());
+                        var intLen = int.Parse(tagLentgh.ToString().PadLeft(tagAttr.LenBytesLen,'0'));
                         tagFieldBytes.AddRange(intLen.IntToHexValue(tagAttr.LenBytesLen).FromASCIIToBytes(tagAttr.Encoding));
                         break;
                     case DataType.BCD:
-                        var valueLenBCD = tagLentgh.ToString().ConvertToBinaryCodedDecimal(false, tagAttr.LenBytesLen);
+                        var valueLenBCD = tagLentgh.ToString().PadLeft(tagAttr.LenBytesLen,'0').ConvertToBinaryCodedDecimal(false, tagAttr.LenBytesLen);
                         tagFieldBytes.AddRange(valueLenBCD);
                         break;
                     default:

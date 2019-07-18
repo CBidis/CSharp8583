@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -16,11 +16,11 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>C:\Users\c.charalampidis\Downloads\CSharp8583\CSharp8583\CSharp8583.xml</DocumentationFile>
+    <DocumentationFile>C:\Users\Bill\source\repos\CSharp8583\CSharp8583\CSharp8583\CSharp8583.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\Users\chrigeta\Downloads\CSharp8583\CSharp8583.xml</DocumentationFile>
+    <DocumentationFile>C:\Users\Bill\source\repos\CSharp8583\CSharp8583\CSharp8583\CSharp8583.xml</DocumentationFile>
   </PropertyGroup>
 
 </Project>

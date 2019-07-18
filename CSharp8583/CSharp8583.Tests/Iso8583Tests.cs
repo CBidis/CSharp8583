@@ -152,5 +152,39 @@ namespace CSharp8583.Tests
             Field41 = "JI091003",
             Field42 = "000000000111111"
         };
+
+
+        [Fact]
+        public void ASCII_Message_Parse_And_Build_TagValueLength()
+        {
+            AsciiMessageWTagLenght asciiMessage = _iso8583.Parse<AsciiMessageWTagLenght>(ConstantValues.ASCIIBytesTagLengthThree);
+            Assert.Equal("00000005", asciiMessage.Field41);
+            Assert.Equal("000000000001112", asciiMessage.Field42);
+            Assert.Equal("0000", asciiMessage.Field63.Tag01);
+            Assert.Equal("FR4454881", asciiMessage.Field63.Tag02);
+            Assert.Equal("22215", asciiMessage.Field63.Tag03);
+            Assert.Equal("0", asciiMessage.Field63.Tag04);
+
+            var asciiMessageBytes = _iso8583.Build(asciiMessage, "0100");
+
+            Assert.Equal(asciiMessageBytes, ConstantValues.ASCIIBytesTagLengthThree);
+        }
+
+
+        [Fact]
+        public void ASCII_Message_Parse_And_Build_TagValueLengthII()
+        {
+            AsciiMessageWTagLengthII asciiMessage = _iso8583.Parse<AsciiMessageWTagLengthII>(ConstantValues.ASCIIBytesTagLengthTwo);
+            Assert.Equal("00000005", asciiMessage.Field41);
+            Assert.Equal("000000000001112", asciiMessage.Field42);
+            Assert.Equal("0000", asciiMessage.Field63.Tag01);
+            Assert.Equal("FR4454881", asciiMessage.Field63.Tag02);
+            Assert.Equal("22215", asciiMessage.Field63.Tag03);
+            Assert.Equal("0", asciiMessage.Field63.Tag04);
+
+            var asciiMessageBytes = _iso8583.Build(asciiMessage, "0100");
+
+            Assert.Equal(asciiMessageBytes, ConstantValues.ASCIIBytesTagLengthTwo);
+        }
     }
 }
