@@ -22,17 +22,27 @@ namespace CSharp8583.Extensions
         /// <returns>A Dictionary of TMessage Properties and IsoField Attributes of TMessage Class</returns>
         internal static Dictionary<PropertyInfo, IsoFieldAttribute> PropsAndIsoFieldAttributes<TMessage>(this Type messageType) where TMessage : BaseMessage
         {
+
+#if NET40
+            IEnumerable<PropertyInfo> isoFieldProps = messageType?.GetProperties().Where(
+                                        prop => Attribute.GetCustomAttributes(prop).Any(attr => attr.GetType() == typeof(IsoFieldAttribute)));
+#else
             IEnumerable<PropertyInfo> isoFieldProps = messageType?.GetProperties().Where(
                                         prop => prop.GetCustomAttributes().Any(attr => attr.GetType() == typeof(IsoFieldAttribute)));
+#endif
 
             if (!isoFieldProps.Any())
                 throw new ArgumentException($"for type {messageType?.FullName} they have not been defined any properties with attibute of IsoFieldAttribute");
 
             var isoAPropsttributesOfT = new Dictionary<PropertyInfo, IsoFieldAttribute>();
 
-            foreach(PropertyInfo isoFieldProp in isoFieldProps)
+            foreach (PropertyInfo isoFieldProp in isoFieldProps)
             {
+#if NET40
+                IsoFieldAttribute isoFieldFieldAttr = (IsoFieldAttribute)Attribute.GetCustomAttribute(isoFieldProp, typeof(IsoFieldAttribute));
+#else
                 IsoFieldAttribute isoFieldFieldAttr = isoFieldProp.GetCustomAttribute<IsoFieldAttribute>();
+#endif
                 isoAPropsttributesOfT.Add(isoFieldProp, isoFieldFieldAttr);
             }
 

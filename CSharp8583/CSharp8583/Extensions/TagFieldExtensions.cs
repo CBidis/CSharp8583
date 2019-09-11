@@ -22,8 +22,14 @@ namespace CSharp8583.Extensions
         /// <returns>A Dictionary of TField Properties and TField Attributes of TField Class</returns>
         internal static Dictionary<PropertyInfo, TagAttribute> PropsAndTagsdAttributes<TField>(this Type fieldType) where TField : CustomField
         {
+#if NET40
+           IEnumerable<PropertyInfo> tagFieldProps = fieldType?.GetProperties().Where(
+                                        prop => Attribute.GetCustomAttributes(prop).Any(attr => attr.GetType() == typeof(TagAttribute)));
+#else
             IEnumerable<PropertyInfo> tagFieldProps = fieldType?.GetProperties().Where(
-                                        prop => prop.GetCustomAttributes().Any(attr => attr.GetType() == typeof(TagAttribute)));
+                prop => prop.GetCustomAttributes().Any(attr => attr.GetType() == typeof(TagAttribute)));
+#endif
+
 
             if (!tagFieldProps.Any())
                 throw new ArgumentException($"for type {fieldType?.FullName} they have not been defined any properties with attibute of TagAttribute");
@@ -32,7 +38,12 @@ namespace CSharp8583.Extensions
 
             foreach (PropertyInfo tagFieldProp in tagFieldProps)
             {
+#if NET40
+                TagAttribute tagFieldFieldAttr = (TagAttribute)Attribute.GetCustomAttribute(tagFieldProp, typeof(TagAttribute));
+#else
                 TagAttribute tagFieldFieldAttr = tagFieldProp.GetCustomAttribute<TagAttribute>();
+#endif
+
                 tagPropsAttributesOfT.Add(tagFieldProp, tagFieldFieldAttr);
             }
 
@@ -141,14 +152,14 @@ namespace CSharp8583.Extensions
                 switch (tagAttr.LenDataType)
                 {
                     case DataType.ASCII:
-                        tagFieldBytes.AddRange(tagLentgh.ToString().PadLeft(tagAttr.LenBytesLen,'0').FromASCIIToBytes(tagAttr.Encoding));
+                        tagFieldBytes.AddRange(tagLentgh.ToString().PadLeft(tagAttr.LenBytesLen, '0').FromASCIIToBytes(tagAttr.Encoding));
                         break;
                     case DataType.HEX:
-                        var intLen = int.Parse(tagLentgh.ToString().PadLeft(tagAttr.LenBytesLen,'0'));
+                        var intLen = int.Parse(tagLentgh.ToString().PadLeft(tagAttr.LenBytesLen, '0'));
                         tagFieldBytes.AddRange(intLen.IntToHexValue(tagAttr.LenBytesLen).FromASCIIToBytes(tagAttr.Encoding));
                         break;
                     case DataType.BCD:
-                        var valueLenBCD = tagLentgh.ToString().PadLeft(tagAttr.LenBytesLen,'0').ConvertToBinaryCodedDecimal(false, tagAttr.LenBytesLen);
+                        var valueLenBCD = tagLentgh.ToString().PadLeft(tagAttr.LenBytesLen, '0').ConvertToBinaryCodedDecimal(false, tagAttr.LenBytesLen);
                         tagFieldBytes.AddRange(valueLenBCD);
                         break;
                     default:

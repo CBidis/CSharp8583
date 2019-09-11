@@ -32,9 +32,9 @@ namespace CSharp8583.Common
         internal static object GetValueFromInstance(object instance, PropertyInfo prop)
         {
             if (prop.PropertyType.IsEnum)
-                return ((Enum)Enum.Parse(prop.PropertyType, prop.GetValue(instance).ToString()))?.GetEnumDescription() ?? string.Empty;
+                return ((Enum)Enum.Parse(prop.PropertyType, prop.GetValue(instance, null).ToString()))?.GetEnumDescription() ?? string.Empty;
             else
-                return prop.GetValue(instance);
+                return prop.GetValue(instance, null);
         }
     }
 }
