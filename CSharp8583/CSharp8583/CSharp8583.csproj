@@ -2,17 +2,18 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net47;net46;net45;net40</TargetFrameworks>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageProjectUrl>https://github.com/CBidis/CSharp8583</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/CBidis/CSharp8583/blob/master/LICENSE</PackageLicenseUrl>
     <RepositoryUrl>https://github.com/CBidis/CSharp8583</RepositoryUrl>
     <Authors>Christos Charalampidis (CBidis)</Authors>
     <PackageTags>ISO8583,8583,ISO,CSharp8583</PackageTags>
-    <PackageReleaseNotes>Added support for Binary Data Type conversions in Iso Field Attributes.</PackageReleaseNotes>
+    <PackageReleaseNotes>Added multiple target framework support (net47,net46,net45,net40)
+FIxed issue for Tag Length Parsing in CustomFields.</PackageReleaseNotes>
     <Description>The CSharp8583 Library is a C# implementation of the ISO-8583 Protocol as a .NET Standard 2.0 Library.</Description>
-    <AssemblyVersion>1.0.0.1</AssemblyVersion>
-    <Version>1.0.1</Version>
-    <FileVersion>1.0.1.1</FileVersion>
+    <AssemblyVersion>1.0.0.2</AssemblyVersion>
+    <Version>1.0.2</Version>
+    <FileVersion>1.0.1.2</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
