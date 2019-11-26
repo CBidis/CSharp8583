@@ -28,6 +28,7 @@ namespace CSharp8583.Tests
         [Fact]
         public void ASCII_Message_All_ISO_Fields_Parsed()
         {
+            Console.Write(Iso8583.GetRawDebug(ConstantValues.ASCIIBytes));
             ASCIIMessage asciiMessage = _iso8583.Parse<ASCIIMessage>(ConstantValues.ASCIIBytes);
             Assert.NotNull(asciiMessage);
 
@@ -48,12 +49,14 @@ namespace CSharp8583.Tests
         {
             ASCIIMessage asciiMessage = GetASCIIMessageObj();
             var asciiMessageBytes = _iso8583.Build(asciiMessage, "0100", IsoFields.F39, IsoFields.F73);
+            Console.Write(Iso8583.GetRawDebug(asciiMessageBytes));
             Assert.Equal(asciiMessageBytes, ConstantValues.ASCIIBytes);
         }
 
         [Fact]
         public void ASCII_Message_Missing_Field42_Should_Throw_ParseException()
         {
+            Console.Write(Iso8583.GetRawDebug(ConstantValues.ASCIIBytesMissingF41));
             ASCIIMessage asciiMessage = _iso8583.Parse<ASCIIMessage>(ConstantValues.ASCIIBytesMissingF41);
         }
 
@@ -79,6 +82,7 @@ namespace CSharp8583.Tests
         [Fact]
         public void Parse_ASCII_Message_With_Secondary_BitMap()
         {
+            Console.Write(Iso8583.GetRawDebug(ConstantValues.ASCIIBytesWithSecondaryBitmap));
             ASCIIMessage asciiMessage = _iso8583.Parse<ASCIIMessage>(ConstantValues.ASCIIBytesWithSecondaryBitmap);
 
             Assert.NotNull(asciiMessage);
@@ -103,12 +107,14 @@ namespace CSharp8583.Tests
             asciiMessage.Field73 = "121212";
 
             var asciiMessageBytes = _iso8583.Build(asciiMessage, "0100", IsoFields.F39);
+            Console.Write(Iso8583.GetRawDebug(asciiMessageBytes));
             Assert.Equal(asciiMessageBytes, ConstantValues.ASCIIBytesWithSecondaryBitmap);
         }
 
         [Fact]
         public void Parse_ASCII_Message_With_F63()
         {
+            Console.Write(Iso8583.GetRawDebug(ConstantValues.ASCIIBytesWithResField));
             ASCIIMessageWF63 asciiMessageF63 = _iso8583.Parse<ASCIIMessageWF63>(ConstantValues.ASCIIBytesWithResField);
 
             Assert.NotNull(asciiMessageF63);
@@ -138,6 +144,7 @@ namespace CSharp8583.Tests
             };
 
             var asciiMessage63Bytes = _iso8583.Build(asciiMessageF63, "0100");
+            Console.Write(Iso8583.GetRawDebug(ConstantValues.ASCIIBytesWithResField));
             Assert.Equal(asciiMessage63Bytes, ConstantValues.ASCIIBytesWithResField);
         }
 
@@ -157,6 +164,7 @@ namespace CSharp8583.Tests
         [Fact]
         public void ASCII_Message_Parse_And_Build_TagValueLength()
         {
+            Console.Write(Iso8583.GetRawDebug(ConstantValues.ASCIIBytesTagLengthThree));
             AsciiMessageWTagLenght asciiMessage = _iso8583.Parse<AsciiMessageWTagLenght>(ConstantValues.ASCIIBytesTagLengthThree);
             Assert.Equal("00000005", asciiMessage.Field41);
             Assert.Equal("000000000001112", asciiMessage.Field42);
@@ -174,6 +182,7 @@ namespace CSharp8583.Tests
         [Fact]
         public void ASCII_Message_Parse_And_Build_TagValueLengthII()
         {
+            Console.Write(Iso8583.GetRawDebug(ConstantValues.ASCIIBytesTagLengthTwo));
             AsciiMessageWTagLengthII asciiMessage = _iso8583.Parse<AsciiMessageWTagLengthII>(ConstantValues.ASCIIBytesTagLengthTwo);
             Assert.Equal("00000005", asciiMessage.Field41);
             Assert.Equal("000000000001112", asciiMessage.Field42);

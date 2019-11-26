@@ -232,6 +232,8 @@ namespace CSharp8583.Extensions
                         fieldBytes.AddRange(fieldValue.ToBinaryStringFromHex().ToBytesFromBinaryString());
                         break;
                     case DataType.BCD:
+                        if (fieldValue.Length % 2 == 1)
+                            fieldValue += '0';
                         var bcdValue = fieldValue.ConvertToBinaryCodedDecimal(false);
                         fieldBytes.AddRange(bcdValue);
                         break;
