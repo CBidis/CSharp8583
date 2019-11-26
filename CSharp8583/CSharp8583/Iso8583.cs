@@ -17,6 +17,20 @@ namespace CSharp8583
     public class Iso8583
     {
         /// <summary>
+        /// Parse Iso Message bytes to IIsoMessage object
+        /// </summary>
+        /// <param name="isoMessageBytes">bytes to parse</param>
+        /// <returns>an IISOMessage object</returns>
+        public IIsoMessage Parse(byte[] isoMessageBytes) => throw new NotImplementedException();
+
+        /// <summary>
+        /// Build byte from IIsoMessage
+        /// </summary>
+        /// <param name="message">IIsoMessage instance</param>
+        /// <returns>byte array of builded message</returns>
+        public byte[] Build(IIsoMessage message) => throw new NotImplementedException();
+
+        /// <summary>
         /// Parse a byte[] iso Message to an Instance of TMessage
         /// </summary>
         /// <typeparam name="TMessage">TMessage class, a derived class of BaseMessage class</typeparam>

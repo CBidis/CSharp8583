@@ -7,7 +7,7 @@ namespace CSharp8583.Attributes
     /// Used To Decorate Properties for Reserved Fields Parsing
     /// </summary>
     [AttributeUsage(validOn: AttributeTargets.Property, Inherited = false)]
-    public class TagAttribute : Attribute
+    public class TagAttribute : Attribute, ITagProperties
     {
         /// <summary>
         /// Constructor of Tag Field Value
@@ -34,36 +34,36 @@ namespace CSharp8583.Attributes
         /// <summary>
         /// Tag Position
         /// </summary>
-        public int Position { get; }
+        public int Position { get; set; }
 
         /// <summary>
         /// Tag Name Value
         /// </summary>
-        public string TagName { get; }
+        public string TagName { get; set; }
 
         /// <summary>
         /// Lentgh of Length Bytes
         /// </summary>
-        public int LenBytesLen { get; }
+        public int LenBytesLen { get; set; }
 
         /// <summary>
         /// Data Type of Field
         /// </summary>
-        public DataType DataType { get; }
+        public DataType DataType { get; set; }
 
         /// <summary>
         /// Len Data Type of Field
         /// </summary>
-        public DataType LenDataType { get; }
+        public DataType LenDataType { get; set; }
 
         /// <summary>
         /// Encoding
         /// </summary>
-        public EncodingType Encoding { get; }
+        public EncodingType Encoding { get; set; }
 
         /// <summary>
         /// IsTLV
         /// </summary>
-        public bool IsTLV { get; }
+        public bool IsTLV { get; set; }
     }
 }
