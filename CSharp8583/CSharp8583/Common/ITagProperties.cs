@@ -6,6 +6,11 @@
     public interface ITagProperties
     {
         /// <summary>
+        /// Value property, can be used for Default value
+        /// </summary>
+        string Value { get; set; }
+
+        /// <summary>
         /// Tag Position
         /// </summary>
         int Position { get; set; }

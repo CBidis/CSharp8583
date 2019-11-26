@@ -1,4 +1,4 @@
-﻿using CSharp8583.Attributes;
+﻿using CSharp8583.Common;
 using System;
 
 namespace CSharp8583.Exceptions
@@ -14,7 +14,7 @@ namespace CSharp8583.Exceptions
         /// </summary>
         /// <param name="tagAttr">Tag Attribute Data</param>
         /// <param name="exMessage">error message</param>
-        public ParseTagException(TagAttribute tagAttr, string exMessage) : base(exMessage)
+        public ParseTagException(ITagProperties tagAttr, string exMessage) : base(exMessage)
         {
             TagData = tagAttr;
         }
@@ -25,7 +25,7 @@ namespace CSharp8583.Exceptions
         /// <param name="tagAttr">Tag Attribute Data</param>
         /// <param name="innerEx">Inner exception details</param>
         /// <param name="exMessage">error message</param>
-        public ParseTagException(TagAttribute tagAttr, string exMessage, Exception innerEx) : base(exMessage, innerEx)
+        public ParseTagException(ITagProperties tagAttr, string exMessage, Exception innerEx) : base(exMessage, innerEx)
         {
             TagData = tagAttr;
         }
@@ -33,7 +33,7 @@ namespace CSharp8583.Exceptions
         /// <summary>
         /// Iso Field Data
         /// </summary>
-        public TagAttribute TagData { get; }
+        public ITagProperties TagData { get; }
     }
 }
 

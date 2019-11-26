@@ -9,13 +9,18 @@ namespace CSharp8583.Common
     public interface IIsoMessage
     {
         /// <summary>
-        /// Message type indicator of IsoMessage
+        /// MTI Field
         /// </summary>
-        string MTI { get; set; }
+        IIsoFieldProperties MTI { get; set; }
+
+        /// <summary>
+        /// Bit Map Field
+        /// </summary>
+        IIsoFieldProperties BitMap { get; set; }
 
         /// <summary>
         /// Collection of ISO Fields
         /// </summary>
-        List<IsoField> IsoFields { get; set; }
+        List<IIsoFieldProperties> IsoFieldsCollection { get; set; }
     }
 }

@@ -6,6 +6,11 @@
     public interface IIsoFieldProperties
     {
         /// <summary>
+        /// Value property, can be used for Default value
+        /// </summary>
+        string Value { get; set; }
+
+        /// <summary>
         /// Iso Field Number
         /// </summary>
         IsoFields Position { get; set; }

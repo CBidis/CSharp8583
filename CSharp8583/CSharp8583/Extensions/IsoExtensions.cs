@@ -52,27 +52,26 @@ namespace CSharp8583.Extensions
         /// <summary>
         /// Gets Custom Field Len according to Len Bytes
         /// </summary>
-        /// <param name="isoFieldAttribute">iso Field Attribute</param>
+        /// <param name="isoFieldProperties">IIsoFieldProperties implementation</param>
         /// <param name="isoMessageBytes">iso message bytes</param>
         /// <param name="currentPos">current parsing position</param>
         /// <returns>length of Custom Field parsed</returns>
-        internal static int TagFieldLength(this IsoFieldAttribute isoFieldAttribute, byte[] isoMessageBytes, ref int currentPos)
+        internal static int TagFieldLength(this IIsoFieldProperties isoFieldProperties, byte[] isoMessageBytes, ref int currentPos)
         {
             var fieldLen = 0;
-            var fieldValue = string.Empty;
-            var lengthBytes = (int)isoFieldAttribute.LengthType;
+            var lengthBytes = (int)isoFieldProperties.LengthType;
 
-            if (isoFieldAttribute.LenDataType == DataType.ASCII)
+            if (isoFieldProperties.LenDataType == DataType.ASCII)
             {
-                var lenValue = isoMessageBytes.Skip(currentPos).Take(lengthBytes).ToASCIIString(isoFieldAttribute.Encoding);
+                var lenValue = isoMessageBytes.Skip(currentPos).Take(lengthBytes).ToASCIIString(isoFieldProperties.Encoding);
                 fieldLen = int.Parse(lenValue);
             }
-            else if (isoFieldAttribute.LenDataType == DataType.HEX)
+            else if (isoFieldProperties.LenDataType == DataType.HEX)
             {
-                var lenValue = isoMessageBytes.Skip(currentPos).Take(lengthBytes).ToASCIIString(isoFieldAttribute.Encoding);
+                var lenValue = isoMessageBytes.Skip(currentPos).Take(lengthBytes).ToASCIIString(isoFieldProperties.Encoding);
                 fieldLen = lenValue.HexValueToInt();
             }
-            else if (isoFieldAttribute.LenDataType == DataType.BCD)
+            else if (isoFieldProperties.LenDataType == DataType.BCD)
             {
                 lengthBytes = lengthBytes - 1;
                 var lenValue = isoMessageBytes.Skip(currentPos).Take(lengthBytes).ToArray().BDCToString();
@@ -105,38 +104,38 @@ namespace CSharp8583.Extensions
         /// <summary>
         /// Parses bytes value to an object value
         /// </summary>
-        /// <param name="isoFieldAttribute">iso Field Attribute</param>
+        /// <param name="isoFieldProperties">IIsoFieldProperties implementation</param>
         /// <param name="isoMessageBytes">whole Message bytes</param>
         /// <param name="currentPos">current Position of Parsed Message bytes, passed as a Reference</param>
         /// <returns>field object value</returns>
-        internal static string GetFieldValue(this IsoFieldAttribute isoFieldAttribute, byte[] isoMessageBytes, ref int currentPos)
+        internal static string GetFieldValue(this IIsoFieldProperties isoFieldProperties, byte[] isoMessageBytes, ref int currentPos)
         {
             var fieldLen = 0;
             var fieldValue = string.Empty;
-            var lengthBytes = (int)isoFieldAttribute.LengthType;
+            var lengthBytes = (int)isoFieldProperties.LengthType;
 
             try
             {
-                switch (isoFieldAttribute.LengthType)
+                switch (isoFieldProperties.LengthType)
                 {
                     case LengthType.FIXED:
                     case LengthType.LVAR:
-                        fieldLen = isoFieldAttribute.MaxLen;
+                        fieldLen = isoFieldProperties.MaxLen;
                         break;
 
                     case LengthType.LLVAR:
                     case LengthType.LLLVAR:
-                        if (isoFieldAttribute.LenDataType == DataType.ASCII)
+                        if (isoFieldProperties.LenDataType == DataType.ASCII)
                         {
-                            var lenValue = isoMessageBytes.Skip(currentPos).Take(lengthBytes).ToASCIIString(isoFieldAttribute.Encoding);
+                            var lenValue = isoMessageBytes.Skip(currentPos).Take(lengthBytes).ToASCIIString(isoFieldProperties.Encoding);
                             fieldLen = int.Parse(lenValue);
                         }
-                        else if (isoFieldAttribute.LenDataType == DataType.HEX)
+                        else if (isoFieldProperties.LenDataType == DataType.HEX)
                         {
-                            var lenValue = isoMessageBytes.Skip(currentPos).Take(lengthBytes).ToASCIIString(isoFieldAttribute.Encoding);
+                            var lenValue = isoMessageBytes.Skip(currentPos).Take(lengthBytes).ToASCIIString(isoFieldProperties.Encoding);
                             fieldLen = lenValue.HexValueToInt();
                         }
-                        else if (isoFieldAttribute.LenDataType == DataType.BCD)
+                        else if (isoFieldProperties.LenDataType == DataType.BCD)
                         {
                             lengthBytes = lengthBytes - 1; //BCD Always one byte less for Lentgh
                             var lenValue = isoMessageBytes.Skip(currentPos).Take(lengthBytes).ToArray().BDCToString();
@@ -145,26 +144,26 @@ namespace CSharp8583.Extensions
                         break;
 
                     default:
-                        throw new ParseFieldException(isoFieldAttribute, $"Cannot Parse Length value for {isoFieldAttribute?.Position} and Len Type {isoFieldAttribute?.LenDataType}");
+                        throw new ParseFieldException(isoFieldProperties, $"Cannot Parse Length value for {isoFieldProperties?.Position} and Len Type {isoFieldProperties?.LenDataType}");
                 }
 
                 currentPos = currentPos + lengthBytes;
 
-                switch (isoFieldAttribute.DataType)
+                switch (isoFieldProperties.DataType)
                 {
                     case DataType.BIN:
                         fieldValue = isoMessageBytes.Skip(currentPos).Take(fieldLen).ToStringFromBinary();
                         currentPos = currentPos + fieldLen;
                         break;
                     case DataType.BCD:
-                        if (isoFieldAttribute.ContentType != ContentType.B)
+                        if (isoFieldProperties.ContentType != ContentType.B)
                             fieldLen = fieldLen % 2 == 1 ? (fieldLen / 2 + 1) : fieldLen / 2;
 
                         fieldValue = isoMessageBytes.Skip(currentPos).Take(fieldLen).ToArray().BDCToString();
                         currentPos = currentPos + fieldLen;
                         break;
                     case DataType.ASCII:
-                        fieldValue = isoMessageBytes.Skip(currentPos).Take(fieldLen).ToASCIIString(isoFieldAttribute.Encoding);
+                        fieldValue = isoMessageBytes.Skip(currentPos).Take(fieldLen).ToASCIIString(isoFieldProperties.Encoding);
                         currentPos = currentPos + fieldLen;
                         break;
                     case DataType.HEX:
@@ -172,12 +171,12 @@ namespace CSharp8583.Extensions
                         currentPos = currentPos + (fieldLen * 2);
                         break;
                     default:
-                        throw new ParseFieldException(isoFieldAttribute, $"Cannot Parse value for {isoFieldAttribute?.Position} and Type {isoFieldAttribute?.DataType}");
+                        throw new ParseFieldException(isoFieldProperties, $"Cannot Parse value for {isoFieldProperties?.Position} and Type {isoFieldProperties?.DataType}");
                 }
             }
             catch (Exception ex)
             {
-                throw new ParseFieldException(isoFieldAttribute, $"Cannot Parse value for {isoFieldAttribute?.Position} and Type {isoFieldAttribute?.DataType}", ex);
+                throw new ParseFieldException(isoFieldProperties, $"Cannot Parse value for {isoFieldProperties?.Position} and Type {isoFieldProperties?.DataType}", ex);
             }
 
             return fieldValue;
@@ -186,36 +185,36 @@ namespace CSharp8583.Extensions
         /// <summary>
         /// Build Bytes from Field Value
         /// </summary>
-        /// <param name="isoFieldAttribute">isofield attribute of Property</param>
+        /// <param name="isoFieldProperties">IIsoFieldProperties implementation</param>
         /// <param name="fieldValue">field value</param>
         /// <returns>byte array value of Field</returns>
-        internal static byte[] BuildFieldValue(this IsoFieldAttribute isoFieldAttribute, string fieldValue)
+        internal static byte[] BuildFieldValue(this IIsoFieldProperties isoFieldProperties, string fieldValue)
         {
             var fieldBytes = new List<byte>();
 
             try
             {
-                switch (isoFieldAttribute.LengthType)
+                switch (isoFieldProperties.LengthType)
                 {
                     case LengthType.FIXED:
-                        if (fieldValue.Length < isoFieldAttribute.MaxLen)
-                            fieldValue = fieldValue?.PadRight(isoFieldAttribute.MaxLen);
+                        if (fieldValue.Length < isoFieldProperties.MaxLen)
+                            fieldValue = fieldValue?.PadRight(isoFieldProperties.MaxLen);
                         break;
 
                     case LengthType.LVAR:
                     case LengthType.LLVAR:
                     case LengthType.LLLVAR:
-                        if (isoFieldAttribute.LenDataType == DataType.ASCII)
+                        if (isoFieldProperties.LenDataType == DataType.ASCII)
                         {
-                            var valueLen = fieldValue?.Length.ToString().PadLeft((int)isoFieldAttribute.LengthType, '0');
-                            fieldBytes.AddRange(valueLen.FromASCIIToBytes(isoFieldAttribute.Encoding));
+                            var valueLen = fieldValue?.Length.ToString().PadLeft((int)isoFieldProperties.LengthType, '0');
+                            fieldBytes.AddRange(valueLen.FromASCIIToBytes(isoFieldProperties.Encoding));
                         }
-                        else if (isoFieldAttribute.LenDataType == DataType.HEX)
+                        else if (isoFieldProperties.LenDataType == DataType.HEX)
                         {
-                            var valueLen = fieldValue?.Length.IntToHexValue((int)isoFieldAttribute.LengthType);
-                            fieldBytes.AddRange(valueLen.FromASCIIToBytes(isoFieldAttribute.Encoding));
+                            var valueLen = fieldValue?.Length.IntToHexValue((int)isoFieldProperties.LengthType);
+                            fieldBytes.AddRange(valueLen.FromASCIIToBytes(isoFieldProperties.Encoding));
                         }
-                        else if (isoFieldAttribute.LenDataType == DataType.BCD)
+                        else if (isoFieldProperties.LenDataType == DataType.BCD)
                         {
                             var valueLen = fieldValue?.Length.ToString().ConvertToBinaryCodedDecimal(false);
                             fieldBytes.AddRange(valueLen);
@@ -223,10 +222,10 @@ namespace CSharp8583.Extensions
                         break;
 
                     default:
-                        throw new BuildFieldException(isoFieldAttribute, $"Cannot Parse Length value for {isoFieldAttribute?.Position} and Len Type {isoFieldAttribute?.LenDataType}");
+                        throw new BuildFieldException(isoFieldProperties, $"Cannot Parse Length value for {isoFieldProperties?.Position} and Len Type {isoFieldProperties?.LenDataType}");
                 }
 
-                switch (isoFieldAttribute.DataType)
+                switch (isoFieldProperties.DataType)
                 {
                     case DataType.BIN:
                         fieldBytes.AddRange(fieldValue.ToBinaryStringFromHex().ToBytesFromBinaryString());
@@ -239,15 +238,15 @@ namespace CSharp8583.Extensions
                         break;
                     case DataType.ASCII:
                     case DataType.HEX:
-                        fieldBytes.AddRange(fieldValue.FromASCIIToBytes(isoFieldAttribute.Encoding));
+                        fieldBytes.AddRange(fieldValue.FromASCIIToBytes(isoFieldProperties.Encoding));
                         break;
                     default:
-                        throw new BuildFieldException(isoFieldAttribute, $"Cannot Parse value for {isoFieldAttribute?.Position} and Type {isoFieldAttribute?.DataType}");
+                        throw new BuildFieldException(isoFieldProperties, $"Cannot Parse value for {isoFieldProperties?.Position} and Type {isoFieldProperties?.DataType}");
                 }
             }
             catch (Exception ex)
             {
-                throw new BuildFieldException(isoFieldAttribute, $"Cannot Parse value for {isoFieldAttribute?.Position} and Type {isoFieldAttribute?.DataType}", ex);
+                throw new BuildFieldException(isoFieldProperties, $"Cannot Parse value for {isoFieldProperties?.Position} and Type {isoFieldProperties?.DataType}", ex);
             }
 
             return fieldBytes.ToArray();

@@ -9,13 +9,32 @@ namespace CSharp8583.Models
     public class IsoMessage : IIsoMessage
     {
         /// <summary>
-        /// Message type indicator of IsoMessage
+        /// Message type indicator Iso Field
         /// </summary>
-        public string MTI { get; set; }
+        public virtual IIsoFieldProperties MTI { get; set; } = new IsoField
+        {
+            Position = IsoFields.MTI,
+            MaxLen = 4,
+            LengthType = LengthType.FIXED,
+            ContentType = ContentType.B,
+            DataType = DataType.ASCII
+        };
+
+        /// <summary>
+        /// Bit Map Iso Field
+        /// </summary>
+        public virtual IIsoFieldProperties BitMap { get; set; } = new IsoField
+        {
+            Position = IsoFields.BitMap,
+            MaxLen = 8,
+            LengthType = LengthType.FIXED,
+            ContentType = ContentType.B,
+            DataType = DataType.HEX
+        };
 
         /// <summary>
         /// Collection of ISO Fields
         /// </summary>
-        public List<IsoField> IsoFields { get; set; }
+        public List<IIsoFieldProperties> IsoFieldsCollection { get; set; }
     }
 }

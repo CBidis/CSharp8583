@@ -1,4 +1,4 @@
-﻿using CSharp8583.Attributes;
+﻿using CSharp8583.Common;
 using System;
 
 namespace CSharp8583.Exceptions
@@ -14,7 +14,7 @@ namespace CSharp8583.Exceptions
         /// </summary>
         /// <param name="isoFieldAttr">iso field Attribute</param>
         /// <param name="exMessage">error message</param>
-        public BuildFieldException(IsoFieldAttribute isoFieldAttr, string exMessage) : base(exMessage)
+        public BuildFieldException(IIsoFieldProperties isoFieldAttr, string exMessage) : base(exMessage)
         {
             IsoFieldData = isoFieldAttr;
         }
@@ -25,7 +25,7 @@ namespace CSharp8583.Exceptions
         /// <param name="isoFieldAttr">iso field Attribute</param>
         /// <param name="innerEx">Inner exception details</param>
         /// <param name="exMessage">error message</param>
-        public BuildFieldException(IsoFieldAttribute isoFieldAttr, string exMessage, Exception innerEx) : base(exMessage, innerEx)
+        public BuildFieldException(IIsoFieldProperties isoFieldAttr, string exMessage, Exception innerEx) : base(exMessage, innerEx)
         {
             IsoFieldData = isoFieldAttr;
         }
@@ -33,6 +33,6 @@ namespace CSharp8583.Exceptions
         /// <summary>
         /// Iso Field Data
         /// </summary>
-        public IsoFieldAttribute IsoFieldData { get; }
+        public IIsoFieldProperties IsoFieldData { get; }
     }
 }

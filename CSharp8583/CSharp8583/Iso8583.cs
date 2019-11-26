@@ -14,22 +14,8 @@ namespace CSharp8583
     /// <summary>
     /// Used to Build/Parse Iso Messages
     /// </summary>
-    public class Iso8583
+    public partial class Iso8583
     {
-        /// <summary>
-        /// Parse Iso Message bytes to IIsoMessage object
-        /// </summary>
-        /// <param name="isoMessageBytes">bytes to parse</param>
-        /// <returns>an IISOMessage object</returns>
-        public IIsoMessage Parse(byte[] isoMessageBytes) => throw new NotImplementedException();
-
-        /// <summary>
-        /// Build byte from IIsoMessage
-        /// </summary>
-        /// <param name="message">IIsoMessage instance</param>
-        /// <returns>byte array of builded message</returns>
-        public byte[] Build(IIsoMessage message) => throw new NotImplementedException();
-
         /// <summary>
         /// Parse a byte[] iso Message to an Instance of TMessage
         /// </summary>
@@ -44,7 +30,9 @@ namespace CSharp8583
             IsoFieldAttribute mtiIsoField = messageIntance.GetIsoFieldByPropName(nameof(messageIntance.MTI));
             messageIntance.MTI = mtiIsoField.GetFieldValue(isoMessageBytes, ref currentPosition);
 
-            messageIntance.BitMap = ParseBitMap(messageIntance, isoMessageBytes, ref currentPosition);
+            IsoFieldAttribute bitMapField = messageIntance.GetIsoFieldByPropName(nameof(messageIntance.BitMap));
+            messageIntance.BitMap = ParseBitMap(bitMapField, isoMessageBytes, ref currentPosition);
+
             ParseFields(ref messageIntance, isoMessageBytes, currentPosition);
             return messageIntance;
         }
@@ -52,19 +40,17 @@ namespace CSharp8583
         /// <summary>
         /// Parse BitMap of Message to be Parsed
         /// </summary>
-        /// <typeparam name="TMessage">TMessage class, a derived class of BaseMessage class</typeparam>
-        /// <param name="message">message instance</param>
+        /// <param name="bitMapProperties">bit map field properties</param>
         /// <param name="isoMessageBytes">messageBytes</param>
         /// <param name="currentPos">position to Read</param>
         /// <returns>BitMap Value</returns>
-        private string ParseBitMap<TMessage>(TMessage message, byte[] isoMessageBytes, ref int currentPos) where TMessage : BaseMessage, new()
+        private string ParseBitMap(IIsoFieldProperties bitMapProperties, byte[] isoMessageBytes, ref int currentPos)
         {
-            IsoFieldAttribute bitMapIsoField = message.GetIsoFieldByPropName(nameof(BaseMessage.BitMap));
-            var bitMap = bitMapIsoField.GetFieldValue(isoMessageBytes, ref currentPos);
+            var bitMap = bitMapProperties.GetFieldValue(isoMessageBytes, ref currentPos);
 
             //Second BitMap Exists Read More Data
             if (bitMap.ToBinaryStringFromHex().First() == '1')
-                return bitMap + bitMapIsoField.GetFieldValue(isoMessageBytes, ref currentPos);
+                return bitMap + bitMapProperties.GetFieldValue(isoMessageBytes, ref currentPos);
 
             return bitMap;
         }
@@ -241,7 +227,7 @@ namespace CSharp8583
         }
 
 
-        private IEnumerable<byte> BuildTagFields(CustomField valueForMessage, IsoFieldAttribute propAttr)
+        private IEnumerable<byte> BuildTagFields(CustomField valueForMessage)
         {
             var customFieldBytes = new List<byte>();
 
@@ -284,7 +270,7 @@ namespace CSharp8583
                     }
                     else if (prop.PropertyType.BaseType == typeof(CustomField))
                     {
-                        IEnumerable<byte> customFieldBytes = BuildTagFields((CustomField)valueForMessage, propAttr);
+                        IEnumerable<byte> customFieldBytes = BuildTagFields((CustomField)valueForMessage);
                         //Adding Length of Custom Field
                         messageBytes.AddRange(propAttr.BuildCustomFieldLentgh(customFieldBytes.Count().ToString()));
                         messageBytes.AddRange(customFieldBytes);

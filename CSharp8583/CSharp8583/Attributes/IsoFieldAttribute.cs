@@ -32,6 +32,11 @@ namespace CSharp8583.Attributes
         }
 
         /// <summary>
+        /// Value property, can be used for Default value
+        /// </summary>
+        public string Value { get; set; }
+
+        /// <summary>
         /// Iso Field Number
         /// </summary>
         public IsoFields Position { get; set; }
