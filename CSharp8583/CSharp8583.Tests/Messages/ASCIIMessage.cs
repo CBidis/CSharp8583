@@ -1,6 +1,8 @@
 ﻿using CSharp8583.Attributes;
 using CSharp8583.Common;
 using CSharp8583.Messages;
+using CSharp8583.Models;
+using System.Collections.Generic;
 
 namespace CSharp8583.Tests.Messages
 {
@@ -35,6 +37,23 @@ namespace CSharp8583.Tests.Messages
 
         [IsoField(position: IsoFields.F73, maxLen: 6, lengthType: LengthType.FIXED, contentType: ContentType.ANS)]
         public string Field73 { get; set; }
+
+        public static IsoMessage GetMessage() => new IsoMessage
+        {
+            IsoFieldsCollection = new List<IIsoFieldProperties>
+                {
+                    new IsoField{ Position = IsoFields.F4, DataType = DataType.ASCII, MaxLen = 12 },
+                    new IsoField{ Position = IsoFields.F11, DataType = DataType.ASCII, MaxLen = 6 },
+                    new IsoField{ Position = IsoFields.F12, DataType = DataType.ASCII, MaxLen = 6 },
+                    new IsoField{ Position = IsoFields.F13, DataType = DataType.ASCII, MaxLen = 4 },
+                    new IsoField{ Position = IsoFields.F22, DataType = DataType.ASCII, MaxLen = 3 },
+                    new IsoField{ Position = IsoFields.F37, DataType = DataType.ASCII, MaxLen = 12 },
+                    new IsoField{ Position = IsoFields.F39, DataType = DataType.ASCII, MaxLen = 2 },
+                    new IsoField{ Position = IsoFields.F41, DataType = DataType.ASCII, MaxLen = 8 },
+                    new IsoField{ Position = IsoFields.F42, DataType = DataType.ASCII, MaxLen = 15 },
+                    new IsoField{ Position = IsoFields.F73, DataType = DataType.ASCII, MaxLen = 6 }
+                }
+        };
     }
 
     public enum ResponseCodes
