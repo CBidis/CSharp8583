@@ -3,6 +3,7 @@ using System.Linq;
 using CSharp8583.Common;
 using CSharp8583.Models;
 using CSharp8583.Extensions;
+using System.Collections.Generic;
 
 namespace CSharp8583
 {
@@ -33,7 +34,50 @@ namespace CSharp8583
         /// </summary>
         /// <param name="message">IIsoMessage instance</param>
         /// <returns>byte array of builded message</returns>
-        public byte[] Build(IIsoMessage message) => throw new NotImplementedException();
+        public byte[] Build(IIsoMessage message)
+        {
+            IEnumerable<int> orderedFieldPositions = message.IsoFieldsCollection.Select(c => (int)c.Position);
+            var mtiBytes = message.MTI.BuildFieldValue(message.MTI.Value);
+
+            var messageBytes = new List<byte>(mtiBytes);
+            messageBytes.AddRange(BuildBitMap(message.BitMap, orderedFieldPositions));
+
+            IEnumerable<int> fieldsToBuild = orderedFieldPositions.Where(pos => pos != (int)IsoFields.F1 && pos != (int)IsoFields.BitMap && pos != (int)IsoFields.MTI);
+            BuildFields(fieldsToBuild, message, ref messageBytes);
+
+            return new byte[2];
+        }
+
+        /// <summary>
+        /// Adds message bytes the rest of the Fields
+        /// </summary>
+        /// <param name="orderedFieldPositions">fields that need to be builded</param>
+        /// <param name="message">message instance</param>
+        /// <param name="messageBytes">message bytes as Ref</param>
+        private void BuildFields(IEnumerable<int> orderedFieldPositions, IIsoMessage message, ref List<byte> messageBytes)
+        {
+            foreach (var fieldPosition in orderedFieldPositions)
+            {
+                IIsoFieldProperties fieldProperties = message.GetFieldByPosition(fieldPosition);
+
+                if (fieldProperties != null)
+                {
+                    var valueForMessage = fieldProperties.Value;
+
+                    if (valueForMessage == null)
+                        throw new ArgumentNullException($"Iso Field {fieldProperties?.Position} has null Value");
+
+                    if (fieldProperties is IsoField isoField && isoField.Tags != null)
+                    {
+                        IEnumerable<byte> customFieldBytes = BuildTagFields(isoField);
+                        messageBytes.AddRange(fieldProperties.BuildCustomFieldLentgh(customFieldBytes.Count().ToString()));
+                        messageBytes.AddRange(customFieldBytes);
+                    }
+                    else
+                        messageBytes.AddRange(fieldProperties.BuildFieldValue(valueForMessage.ToString()));
+                }
+            }
+        }
 
         /// <summary>
         /// Parse Fields and Assign Values according to BitMap Value
@@ -72,6 +116,26 @@ namespace CSharp8583
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Build Tag Fields Bytes
+        /// </summary>
+        /// <param name="isoField">Iso Field with Tags</param>
+        /// <returns>custom field bytes value</returns>
+        private IEnumerable<byte> BuildTagFields(IsoField isoField)
+        {
+            var customFieldBytes = new List<byte>();
+
+            foreach (ITagProperties tagProperties in isoField.Tags)
+            {
+                if (tagProperties.Value == null)
+                    continue;
+
+                customFieldBytes.AddRange(tagProperties.GetTagBytes(tagProperties.Value));
+            }
+
+            return customFieldBytes;
         }
 
         /// <summary>

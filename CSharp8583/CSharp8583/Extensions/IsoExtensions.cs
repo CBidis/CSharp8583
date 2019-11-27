@@ -83,7 +83,7 @@ namespace CSharp8583.Extensions
             return fieldLen;
         }
 
-        internal static byte[] BuildCustomFieldLentgh(this IsoFieldAttribute isoFieldAttribute, string lenValue)
+        internal static byte[] BuildCustomFieldLentgh(this IIsoFieldProperties isoFieldAttribute, string lenValue)
         {
             lenValue = lenValue.PadLeft((int)isoFieldAttribute.LengthType, '0');
 

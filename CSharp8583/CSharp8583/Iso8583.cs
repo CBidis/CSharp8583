@@ -73,7 +73,8 @@ namespace CSharp8583
             var messageBytes = new List<byte>(mtiBytes);
 
             IEnumerable<int> fieldsForBitMap = orderedFieldPositions.Where(pos => !notIncludeFields.Contains((IsoFields)pos));
-            messageBytes.AddRange(BuildBitMap(message, fieldsForBitMap));
+            IsoFieldAttribute bitMapField = message.GetIsoFieldByPropName(nameof(message.BitMap));
+            messageBytes.AddRange(BuildBitMap(bitMapField, fieldsForBitMap));
 
             IEnumerable<int> fieldsToBuild = fieldsForBitMap.Where(pos => pos != (int)IsoFields.F1  && pos != (int)IsoFields.BitMap && pos != (int)IsoFields.MTI);
             BuildFields(fieldsToBuild, message, ref messageBytes);
@@ -83,14 +84,13 @@ namespace CSharp8583
         /// <summary>
         /// Builds BitMap value of Message to Send
         /// </summary>
-        /// <typeparam name="TMessage">TMessage class, a derived class of BaseMessage class</typeparam>
-        /// <param name="message">message instance</param>
+        /// <param name="bitMapField">bitmap field properties</param>
         /// <param name="orderedFields">ordered fields positions</param>
         /// <returns>byte array bitMap value</returns>
-        private byte[] BuildBitMap<TMessage>(TMessage message, IEnumerable<int> orderedFields) where TMessage : BaseMessage, new()
+        private byte[] BuildBitMap(IIsoFieldProperties bitMapField, IEnumerable<int> orderedFields)
         {
             var secondBitRequired = orderedFields.Any(pos => pos > 65 && pos < 128);
-            IsoFieldAttribute bitMapIsoField = message.GetIsoFieldByPropName(nameof(BaseMessage.BitMap));
+ 
             char[] bitmapBinaryArray = null;
 
             if (secondBitRequired)
@@ -120,7 +120,7 @@ namespace CSharp8583
                 bitMap = bitMap + Convert.ToInt64(bitmapString.Substring(65, 64), 2).ToString("X").PadLeft(16, '0');
             }
 
-            return bitMapIsoField.BuildFieldValue(bitMap);
+            return bitMapField.BuildFieldValue(bitMap);
         }
 
         /// <summary>
