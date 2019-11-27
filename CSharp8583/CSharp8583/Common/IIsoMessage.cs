@@ -9,6 +9,10 @@ namespace CSharp8583.Common
     public interface IIsoMessage
     {
         /// <summary>
+        /// ISO Message Name
+        /// </summary>
+        string Name { get; set; }
+        /// <summary>
         /// MTI Field
         /// </summary>
         IIsoFieldProperties MTI { get; set; }
@@ -21,7 +25,7 @@ namespace CSharp8583.Common
         /// <summary>
         /// Collection of ISO Fields
         /// </summary>
-        List<IIsoFieldProperties> IsoFieldsCollection { get; set; }
+        List<IsoField> IsoFieldsCollection { get; set; }
 
         /// <summary>
         /// Get Field Properties Of Iso Message
@@ -43,5 +47,20 @@ namespace CSharp8583.Common
         /// <param name="position">field position</param>
         /// <returns>Field Value</returns>
         string GetFieldValue(int position);
+
+        /// <summary>
+        /// Updates Iso Field Tag Value
+        /// </summary>
+        /// <param name="position">field position</param>
+        /// <param name="tagName">tag name of Tag field</param>
+        /// <param name="value">value of tag to set</param>
+        void SetTagValue(int position, string tagName, string value);
+
+        /// <summary>
+        /// Gets Iso Field Tag Value
+        /// </summary>
+        /// <param name="position">field position</param>
+        /// <param name="tagName">tag name of Tag field</param>
+        string GetTagValue(int position, string tagName);
     }
 }

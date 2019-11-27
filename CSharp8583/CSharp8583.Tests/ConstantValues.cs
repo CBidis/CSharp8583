@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using CSharp8583.Models;
+using System.Text;
+using Newtonsoft.Json;
 
 namespace CSharp8583.Tests
 {
@@ -7,6 +9,10 @@ namespace CSharp8583.Tests
     /// </summary>
     public static class ConstantValues
     {
+        public static string ASCIIMessageJsonFile = "./Messages/JsonFiles/SimpleASCIIMessageSpecs.json";
+        public static string ASCIIMessageWithF63JsonFile = "./Messages/JsonFiles/ASCIIMessageWithF63Specs.json";
+        public static string ASCIIMessageWithSecondaryBitMapJsonFile = "./Messages/JsonFiles/SimpleASCIIMessageWithSecondaryBitMapSpecs.json";
+
         public static string ASCIIMessage = "01001038040008C000000000000044440000211042120529021000000001015JI091003000000000111111";
         public static string ASCIIMessageWithResField = "01000000000000C00002JI09100300000000011111105801041234020B22222222222030EPROPERTY TAXES040D1111111111111";
         public static string ASCIIMessageWithSecondaryBitmap = "01009038040008C0000000800000000000000000000044440000211042120529021000000001015JI091003000000000111111121212";
@@ -20,6 +26,8 @@ namespace CSharp8583.Tests
         public static byte[] ASCIIBytesWithResField = Encoding.ASCII.GetBytes(ASCIIMessageWithResField);
         public static byte[] ASCIIBytesTagLengthTwo = Encoding.ASCII.GetBytes(ASCIIMessageTagLengthTwo);
         public static byte[] ASCIIBytesTagLengthThree = Encoding.ASCII.GetBytes(ASCIIMessageTagLengthThree);
+
+        public static IsoMessage GetIsoSpecsFromFile(string filePath) => JsonConvert.DeserializeObject<IsoMessage>(System.IO.File.ReadAllText(filePath));
 
     }
 }

@@ -46,25 +46,6 @@ namespace CSharp8583.Tests
         }
 
         [Fact]
-        public void ASCII_Message_All_ISO_Fields_Parsed_With_New_Method()
-        {
-            Console.Write(Iso8583.GetRawDebug(ConstantValues.ASCIIBytes));
-            IIsoMessage asciiMessage = _iso8583.Parse(ConstantValues.ASCIIBytes, ASCIIMessage.GetMessage());
-            Assert.NotNull(asciiMessage);
-
-            Assert.Equal("1038040008C00000", asciiMessage.BitMap.Value);
-            Assert.Equal("0100", asciiMessage.MTI.Value);
-            Assert.Equal("000000004444", asciiMessage.GetFieldValue(4));
-            Assert.Equal("000021", asciiMessage.GetFieldValue(11));
-            Assert.Equal("104212", asciiMessage.GetFieldValue(12));
-            Assert.Equal("0529", asciiMessage.GetFieldValue(13));
-            Assert.Equal("021", asciiMessage.GetFieldValue(22));
-            Assert.Equal("000000001015", asciiMessage.GetFieldValue(37));
-            Assert.Equal("JI091003", asciiMessage.GetFieldValue(41));
-            Assert.Equal("000000000111111", asciiMessage.GetFieldValue(42));
-        }
-
-        [Fact]
         public void ASCII_Message_ISO_Build()
         {
             ASCIIMessage asciiMessage = GetASCIIMessageObj();

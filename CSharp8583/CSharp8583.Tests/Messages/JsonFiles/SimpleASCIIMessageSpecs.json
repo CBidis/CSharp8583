@@ -1,0 +1,113 @@
+{
+  "Name": "Ascii Message",
+  "MTI": {
+    "Position": "MTI",
+    "MaxLen": 4,
+    "LengthType": "FIXED",
+    "ContentType": "B",
+    "DataType": "ASCII",
+    "LenDataType": 0,
+    "Encoding": "None"
+  },
+  "BitMap": {
+    "Position": "BitMap",
+    "MaxLen": 8,
+    "LengthType": "FIXED",
+    "ContentType": "B",
+    "DataType": "HEX",
+    "LenDataType": 0,
+    "Encoding": "None"
+  },
+  "IsoFieldsCollection": [
+    {
+      "Position": "F4",
+      "MaxLen": 12,
+      "LengthType": "FIXED",
+      "ContentType": 0,
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F11",
+      "MaxLen": 6,
+      "LengthType": "FIXED",
+      "ContentType": 0,
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F12",
+      "MaxLen": 6,
+      "LengthType": "FIXED",
+      "ContentType": 0,
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F13",
+      "MaxLen": 4,
+      "LengthType": "FIXED",
+      "ContentType": 0,
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F22",
+      "MaxLen": 3,
+      "LengthType": "FIXED",
+      "ContentType": 0,
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F37",
+      "MaxLen": 12,
+      "LengthType": "FIXED",
+      "ContentType": 0,
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F39",
+      "MaxLen": 2,
+      "LengthType": "FIXED",
+      "ContentType": 0,
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F41",
+      "MaxLen": 8,
+      "LengthType": "FIXED",
+      "ContentType": 0,
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F42",
+      "MaxLen": 15,
+      "LengthType": "FIXED",
+      "ContentType": 0,
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F73",
+      "MaxLen": 6,
+      "LengthType": "FIXED",
+      "ContentType": 0,
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    }
+  ]
+}

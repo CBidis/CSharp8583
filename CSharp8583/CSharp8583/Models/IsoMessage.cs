@@ -10,6 +10,11 @@ namespace CSharp8583.Models
     public class IsoMessage : IIsoMessage
     {
         /// <summary>
+        /// ISO Message Name
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
         /// Message type indicator Iso Field
         /// </summary>
         public virtual IIsoFieldProperties MTI { get; set; } = new IsoField
@@ -36,7 +41,7 @@ namespace CSharp8583.Models
         /// <summary>
         /// Collection of ISO Fields
         /// </summary>
-        public List<IIsoFieldProperties> IsoFieldsCollection { get; set; }
+        public List<IsoField> IsoFieldsCollection { get; set; }
 
         /// <summary>
         /// Get Field Properties Of Iso Message
@@ -50,7 +55,7 @@ namespace CSharp8583.Models
         /// </summary>
         /// <param name="position">field position</param>
         /// <param name="value">value of field to set</param>
-        public void SetFieldValue(int position, string value)
+        public virtual void SetFieldValue(int position, string value)
         {
             IIsoFieldProperties fieldForUpdate = GetFieldByPosition(position);
 
@@ -63,10 +68,52 @@ namespace CSharp8583.Models
         /// </summary>
         /// <param name="position">field position</param>
         /// <returns>Field Value</returns>
-        public string GetFieldValue(int position)
+        public virtual string GetFieldValue(int position)
         {
-            IIsoFieldProperties fieldForUpdate = GetFieldByPosition(position);
-            return fieldForUpdate == null ? null : fieldForUpdate.Value; 
+            IIsoFieldProperties field = GetFieldByPosition(position);
+            return field?.Value; 
+        }
+
+        /// <summary>
+        /// Updates Iso Field Tag Value
+        /// </summary>
+        /// <param name="position">field position</param>
+        /// <param name="tagName">tag name of Tag field</param>
+        /// <param name="value">value of tag to set</param>
+        public virtual void SetTagValue(int position, string tagName, string value)
+        {
+            IIsoFieldProperties fieldProperties = GetFieldByPosition(position);
+
+            if (fieldProperties != null)
+            {
+                if (fieldProperties is IsoField isoField && isoField.Tags != null)
+                {
+                    Tag tagField = isoField.Tags.FirstOrDefault(p => p.TagName == tagName);
+                    if (tagField != null)
+                        tagField.Value = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets Iso Field Tag Value
+        /// </summary>
+        /// <param name="position">field position</param>
+        /// <param name="tagName">tag name of Tag field</param>
+        public virtual string GetTagValue(int position, string tagName)
+        {
+            IIsoFieldProperties fieldProperties = GetFieldByPosition(position);
+
+            if (fieldProperties != null)
+            {
+                if (fieldProperties is IsoField isoField && isoField.Tags != null)
+                {
+                    Tag tag = isoField.Tags.FirstOrDefault(p => p.TagName == tagName);
+                    return tag?.Value;
+                }
+            }
+
+            return null;
         }
     }
 }

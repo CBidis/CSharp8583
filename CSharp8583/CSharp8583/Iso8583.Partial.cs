@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using CSharp8583.Common;
+using CSharp8583.Models;
 using CSharp8583.Extensions;
 
 namespace CSharp8583
@@ -46,7 +47,7 @@ namespace CSharp8583
             //Get BitMap Fields List Values
             var bitMapFields = isoMessage.BitMap.Value.ToBinaryStringFromHex().ToList();
 
-            for (var bitPosition = 1; bitPosition <= bitMapFields.Count - 1; bitPosition++) //TODO: Add Tags parsing
+            for (var bitPosition = 1; bitPosition <= bitMapFields.Count - 1; bitPosition++)
             {
                 var bitMapValue = bitMapFields[bitPosition];
 
@@ -57,11 +58,39 @@ namespace CSharp8583
 
                     if(fieldProperties != null)
                     {
+                        if (fieldProperties is IsoField isoField && isoField.Tags != null)
+                        {
+                            var customFieldLenBytes = fieldProperties.TagFieldLength(isoMessageBytes, ref currentPos);
+                            ParseTagFields(ref isoField, isoMessageBytes.Skip(currentPos).Take(customFieldLenBytes).ToArray());
+                            isoMessage.SetFieldValue(bitPosition + 1, string.Empty);
+                            currentPos = currentPos + customFieldLenBytes;
+                            continue;
+                        }
+
                         var fieldValue = fieldProperties.GetFieldValue(isoMessageBytes, ref currentPos);
                         isoMessage.SetFieldValue(bitPosition + 1, fieldValue);
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Parses IsoField Tags Values
+        /// </summary>
+        /// <param name="isoField">iso field object</param>
+        /// <param name="customFieldBytes">bytes to parse</param>
+        /// <returns>bytes read for tags field</returns>
+        private int ParseTagFields(ref IsoField isoField, byte[] customFieldBytes)
+        {
+            var currentPos = 0;
+
+            foreach (ITagProperties tagProperties in isoField.Tags)
+            {
+                (var tagName, var tagValue) = tagProperties.GetTagValue(customFieldBytes, ref currentPos);
+                isoField.SetTagValue(tagName, tagValue);
+            }
+
+            return currentPos;
         }
 
     }

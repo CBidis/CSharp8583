@@ -16,4 +16,20 @@
     <ProjectReference Include="..\CSharp8583\CSharp8583.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Messages\JsonFiles\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Messages\JsonFiles\ASCIIMessageWithF63Specs.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Messages\JsonFiles\SimpleASCIIMessageSpecs.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Messages\JsonFiles\SimpleASCIIMessageWithSecondaryBitMapSpecs.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

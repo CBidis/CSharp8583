@@ -1,6 +1,8 @@
 ﻿using CSharp8583.Attributes;
 using CSharp8583.Common;
 using CSharp8583.Messages;
+using CSharp8583.Models;
+using System.Collections.Generic;
 
 namespace CSharp8583.Tests.Messages
 {

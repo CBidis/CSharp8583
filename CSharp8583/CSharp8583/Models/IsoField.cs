@@ -1,5 +1,6 @@
 ﻿using CSharp8583.Common;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CSharp8583.Models
 {
@@ -52,5 +53,28 @@ namespace CSharp8583.Models
         /// Tags defined for field of L Types
         /// </summary>
         public List<Tag> Tags { get; set; }
+
+        /// <summary>
+        /// Set Tag Value field
+        /// </summary>
+        /// <param name="tagName">tag Name</param>
+        /// <param name="tagValue">tag value</param>
+        public virtual void SetTagValue(string tagName, string tagValue)
+        {
+            Tag tag = Tags.FirstOrDefault(p => p.TagName == tagName);
+
+            if (tag != null)
+                tag.Value = tagValue;
+        }
+
+        /// <summary>
+        /// Get Tag Value field
+        /// </summary>
+        /// <param name="tagName">tag Name</param>
+        public virtual string GetTagValue(string tagName)
+        {
+            Tag tag = Tags.FirstOrDefault(p => p.TagName == tagName);
+            return tag?.Value;
+        }
     }
 }
