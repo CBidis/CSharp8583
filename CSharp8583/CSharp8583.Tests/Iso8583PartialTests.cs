@@ -1,4 +1,5 @@
 ﻿using CSharp8583.Common;
+using CSharp8583.Models;
 using System;
 using Xunit;
 
@@ -63,6 +64,47 @@ namespace CSharp8583.Tests
             Assert.Equal("JI091003", asciiMessage.GetFieldValue(41));
             Assert.Equal("000000000111111", asciiMessage.GetFieldValue(42));
             Assert.Equal("121212", asciiMessage.GetFieldValue(73));
+        }
+
+        [Fact]
+        public void Build_ASCII_Message_With_F63()
+        {
+            IsoMessage asciiMessageF63 = ConstantValues.GetDefaultIsoSpecsFromFile();
+
+            asciiMessageF63.MTI.Value = "0100";
+            asciiMessageF63.SetFieldValue(41, "JI091003");
+            asciiMessageF63.SetFieldValue(42, "000000000111111");
+            asciiMessageF63.SetTagValue(63, "01", "1234");
+            asciiMessageF63.SetTagValue(63, "02", "22222222222");
+            asciiMessageF63.SetTagValue(63, "03", "PROPERTY TAXES");
+            asciiMessageF63.SetTagValue(63, "04", "1111111111111");
+
+            var asciiMessage63Bytes = _iso8583.Build(asciiMessageF63);
+
+            Console.Write(Iso8583.GetRawDebug(asciiMessage63Bytes));
+            Assert.Equal(asciiMessage63Bytes, ConstantValues.ASCIIBytesWithResField);
+        }
+
+        [Fact]
+        public void Build_ASCII_Message_Secondary_BitMap()
+        {
+            IsoMessage asciiMessageWithSecondaryBitMap = ConstantValues.GetDefaultIsoSpecsFromFile();
+
+            asciiMessageWithSecondaryBitMap.SetFieldValue(4, "000000004444");
+            asciiMessageWithSecondaryBitMap.SetFieldValue(11, "000021");
+            asciiMessageWithSecondaryBitMap.SetFieldValue(12, "104212");
+            asciiMessageWithSecondaryBitMap.SetFieldValue(13, "0529");
+            asciiMessageWithSecondaryBitMap.SetFieldValue(22, "021");
+            asciiMessageWithSecondaryBitMap.SetFieldValue(37, "000000001015");
+            asciiMessageWithSecondaryBitMap.SetFieldValue(41, "JI091003");
+            asciiMessageWithSecondaryBitMap.SetFieldValue(42, "000000000111111");
+            asciiMessageWithSecondaryBitMap.SetFieldValue(73, "121212");
+            asciiMessageWithSecondaryBitMap.MTI.Value = "0100";
+
+            var asciiMessageBytes = _iso8583.Build(asciiMessageWithSecondaryBitMap);
+
+            Console.Write(Iso8583.GetRawDebug(asciiMessageBytes));
+            Assert.Equal(asciiMessageBytes, ConstantValues.ASCIIBytesWithSecondaryBitmap);
         }
     }
 }

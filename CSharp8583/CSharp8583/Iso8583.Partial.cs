@@ -38,7 +38,10 @@ namespace CSharp8583
         /// <returns>byte array of builded message</returns>
         public byte[] Build(IIsoMessage message)
         {
-            IEnumerable<int> orderedFieldPositions = message.IsoFieldsCollection.Select(c => (int)c.Position);
+            //Get Only Fields that Have values or Tags Defined with values
+            IEnumerable<int> orderedFieldPositions = message.IsoFieldsCollection
+                .Where(c => c.Value != null || (c.Tags?.Count > 0 && c.Tags.Any(tag => tag.Value != null))).Select(c => (int)c.Position);
+
             var mtiBytes = message.MTI.BuildFieldValue(message.MTI.Value);
 
             var messageBytes = new List<byte>(mtiBytes);
@@ -47,7 +50,7 @@ namespace CSharp8583
             IEnumerable<int> fieldsToBuild = orderedFieldPositions.Where(pos => pos != (int)IsoFields.F1 && pos != (int)IsoFields.BitMap && pos != (int)IsoFields.MTI);
             BuildFields(fieldsToBuild, message, ref messageBytes);
 
-            return new byte[2];
+            return messageBytes.ToArray();
         }
 
         /// <summary>
@@ -65,9 +68,6 @@ namespace CSharp8583
                 if (fieldProperties != null)
                 {
                     var valueForMessage = fieldProperties.Value;
-
-                    if (valueForMessage == null)
-                        throw new ArgumentNullException($"Iso Field {fieldProperties?.Position} has null Value");
 
                     if (fieldProperties is IsoField isoField && isoField.Tags != null)
                     {
