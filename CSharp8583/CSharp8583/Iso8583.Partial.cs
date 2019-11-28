@@ -26,6 +26,8 @@ namespace CSharp8583
 
             isoMessage.BitMap.Value = ParseBitMap(isoMessage.BitMap, isoMessageBytes, ref currentPosition);
             ParseFields(ref isoMessage, isoMessageBytes, currentPosition);
+            //Keep Only Fields with values,
+            isoMessage.IsoFieldsCollection = isoMessage.IsoFieldsCollection.Where(p => p.Value != null).ToList();
             return isoMessage;
         }
 

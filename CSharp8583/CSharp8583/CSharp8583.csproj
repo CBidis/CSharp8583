@@ -32,6 +32,13 @@ FIxed issue for Tag Length Parsing in CustomFields.</PackageReleaseNotes>
     <None Update="CSharp8583.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Specifications\DefaultIsoMessage.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Specifications\" />
   </ItemGroup>
 
 </Project>

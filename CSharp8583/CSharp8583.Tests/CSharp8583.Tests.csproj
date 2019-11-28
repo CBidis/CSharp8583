@@ -17,17 +17,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Messages\JsonFiles\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Messages\JsonFiles\ASCIIMessageWithF63Specs.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="Messages\JsonFiles\AllIsoFields.txt">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
-    <None Update="Messages\JsonFiles\SimpleASCIIMessageSpecs.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Messages\JsonFiles\SimpleASCIIMessageWithSecondaryBitMapSpecs.json">
+    <None Update="Messages\JsonFiles\DefaultIsoMessage.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

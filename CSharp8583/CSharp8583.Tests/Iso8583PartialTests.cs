@@ -1,5 +1,4 @@
 ﻿using CSharp8583.Common;
-using CSharp8583.Tests.Messages;
 using System;
 using Xunit;
 
@@ -14,7 +13,7 @@ namespace CSharp8583.Tests
         public void ASCII_Message_All_ISO_Fields_Parsed()
         {
             Console.Write(Iso8583.GetRawDebug(ConstantValues.ASCIIBytes));
-            IIsoMessage asciiMessage = _iso8583.Parse(ConstantValues.ASCIIBytes, ConstantValues.GetIsoSpecsFromFile(ConstantValues.ASCIIMessageJsonFile));
+            IIsoMessage asciiMessage = _iso8583.Parse(ConstantValues.ASCIIBytes, ConstantValues.GetDefaultIsoSpecsFromFile());
             Assert.NotNull(asciiMessage);
 
             Assert.Equal("1038040008C00000", asciiMessage.BitMap.Value);
@@ -33,7 +32,7 @@ namespace CSharp8583.Tests
         public void Parse_ASCII_Message_With_F63()
         {
             Console.Write(Iso8583.GetRawDebug(ConstantValues.ASCIIBytesWithResField));
-            IIsoMessage asciiMessageF63 = _iso8583.Parse(ConstantValues.ASCIIBytesWithResField, ConstantValues.GetIsoSpecsFromFile(ConstantValues.ASCIIMessageWithF63JsonFile));
+            IIsoMessage asciiMessageF63 = _iso8583.Parse(ConstantValues.ASCIIBytesWithResField, ConstantValues.GetDefaultIsoSpecsFromFile());
 
             Assert.NotNull(asciiMessageF63);
             Assert.NotNull(asciiMessageF63.GetFieldValue(63));
@@ -49,7 +48,7 @@ namespace CSharp8583.Tests
         public void Parse_ASCII_Message_With_Secondary_BitMap()
         {
             Console.Write(Iso8583.GetRawDebug(ConstantValues.ASCIIBytesWithSecondaryBitmap));
-            IIsoMessage asciiMessage = _iso8583.Parse(ConstantValues.ASCIIBytesWithSecondaryBitmap, ConstantValues.GetIsoSpecsFromFile(ConstantValues.ASCIIMessageWithSecondaryBitMapJsonFile));
+            IIsoMessage asciiMessage = _iso8583.Parse(ConstantValues.ASCIIBytesWithSecondaryBitmap, ConstantValues.GetDefaultIsoSpecsFromFile());
 
             Assert.NotNull(asciiMessage);
             Assert.Equal(32, asciiMessage.BitMap.Value.Length);

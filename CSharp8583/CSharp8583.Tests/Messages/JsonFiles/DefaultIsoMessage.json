@@ -1,0 +1,1213 @@
+{
+  "Name": "Iso Default Fields",
+  "MTI": {
+    "Position": "MTI",
+    "MaxLen": 4,
+    "LengthType": "FIXED",
+    "ContentType": "B",
+    "DataType": "ASCII",
+    "LenDataType": 0,
+    "Encoding": "None"
+  },
+  "BitMap": {
+    "Position": "BitMap",
+    "MaxLen": 8,
+    "LengthType": "FIXED",
+    "ContentType": "B",
+    "DataType": "HEX",
+    "LenDataType": 0,
+    "Encoding": "None"
+  },
+  "IsoFieldsCollection": [
+    {
+      "Position": "F1",
+      "MaxLen": 8,
+      "LengthType": "FIXED",
+      "ContentType": "B",
+      "DataType": "HEX",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F2",
+      "MaxLen": 19,
+      "LengthType": "LLVAR",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F3",
+      "MaxLen": 6,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F4",
+      "MaxLen": 12,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F5",
+      "MaxLen": 12,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F6",
+      "MaxLen": 12,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F7",
+      "MaxLen": 10,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F8",
+      "MaxLen": 8,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F9",
+      "MaxLen": 8,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F10",
+      "MaxLen": 8,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F11",
+      "MaxLen": 6,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F12",
+      "MaxLen": 6,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F13",
+      "MaxLen": 4,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F14",
+      "MaxLen": 4,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F15",
+      "MaxLen": 4,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F16",
+      "MaxLen": 4,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F17",
+      "MaxLen": 4,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F18",
+      "MaxLen": 4,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F19",
+      "MaxLen": 3,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F20",
+      "MaxLen": 3,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F21",
+      "MaxLen": 3,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F22",
+      "MaxLen": 3,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F23",
+      "MaxLen": 3,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F24",
+      "MaxLen": 3,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F25",
+      "MaxLen": 2,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F26",
+      "MaxLen": 2,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F27",
+      "MaxLen": 1,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F28",
+      "MaxLen": 8,
+      "LengthType": "FIXED",
+      "ContentType": "AN",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F29",
+      "MaxLen": 8,
+      "LengthType": "FIXED",
+      "ContentType": "AN",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F30",
+      "MaxLen": 8,
+      "LengthType": "FIXED",
+      "ContentType": "AN",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F31",
+      "MaxLen": 8,
+      "LengthType": "FIXED",
+      "ContentType": "AN",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F32",
+      "MaxLen": 11,
+      "LengthType": "LLVAR",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F33",
+      "MaxLen": 11,
+      "LengthType": "LLVAR",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F34",
+      "MaxLen": 28,
+      "LengthType": "LLVAR",
+      "ContentType": "AN",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F35",
+      "MaxLen": 37,
+      "LengthType": "LLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F36",
+      "MaxLen": 104,
+      "LengthType": "LLLVAR",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F37",
+      "MaxLen": 12,
+      "LengthType": "FIXED",
+      "ContentType": "AN",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F38",
+      "MaxLen": 6,
+      "LengthType": "FIXED",
+      "ContentType": "AN",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F39",
+      "MaxLen": 2,
+      "LengthType": "FIXED",
+      "ContentType": "AN",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F40",
+      "MaxLen": 3,
+      "LengthType": "FIXED",
+      "ContentType": "AN",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F41",
+      "MaxLen": 8,
+      "LengthType": "FIXED",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F42",
+      "MaxLen": 15,
+      "LengthType": "FIXED",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F43",
+      "MaxLen": 40,
+      "LengthType": "FIXED",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F44",
+      "MaxLen": 25,
+      "LengthType": "LLVAR",
+      "ContentType": "AN",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F45",
+      "MaxLen": 76,
+      "LengthType": "LLVAR",
+      "ContentType": "AN",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F46",
+      "MaxLen": 999,
+      "LengthType": "LLLVAR",
+      "ContentType": "AN",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F47",
+      "MaxLen": 999,
+      "LengthType": "LLLVAR",
+      "ContentType": "AN",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F48",
+      "MaxLen": 999,
+      "LengthType": "LLLVAR",
+      "ContentType": "AN",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F49",
+      "MaxLen": 3,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F50",
+      "MaxLen": 3,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F51",
+      "MaxLen": 3,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F52",
+      "MaxLen": 64,
+      "LengthType": "FIXED",
+      "ContentType": "B",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F53",
+      "MaxLen": 16,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F54",
+      "MaxLen": 120,
+      "LengthType": "LLLVAR",
+      "ContentType": "AN",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F55",
+      "MaxLen": 999,
+      "LengthType": "LLLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F56",
+      "MaxLen": 999,
+      "LengthType": "LLLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F57",
+      "MaxLen": 999,
+      "LengthType": "LLLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F58",
+      "MaxLen": 999,
+      "LengthType": "LLLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F59",
+      "MaxLen": 999,
+      "LengthType": "LLLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F60",
+      "MaxLen": 999,
+      "LengthType": "LLLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F61",
+      "MaxLen": 999,
+      "LengthType": "LLLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F62",
+      "MaxLen": 999,
+      "LengthType": "LLLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F63",
+      "MaxLen": 999,
+      "LengthType": "LLLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None",
+      "Tags": [
+        {
+          "Position": 0,
+          "TagName": "01",
+          "LenBytesLen": 2,
+          "DataType": "ASCII",
+          "LenDataType": "HEX",
+          "Encoding": "None",
+          "IsTLV": true
+        },
+        {
+          "Position": 0,
+          "TagName": "02",
+          "LenBytesLen": 2,
+          "DataType": "ASCII",
+          "LenDataType": "HEX",
+          "Encoding": "None",
+          "IsTLV": true
+        },
+        {
+          "Position": 0,
+          "TagName": "03",
+          "LenBytesLen": 2,
+          "DataType": "ASCII",
+          "LenDataType": "HEX",
+          "Encoding": "None",
+          "IsTLV": true
+        },
+        {
+          "Position": 0,
+          "TagName": "04",
+          "LenBytesLen": 2,
+          "DataType": "ASCII",
+          "LenDataType": "HEX",
+          "Encoding": "None",
+          "IsTLV": true
+        }
+      ]
+    },
+    {
+      "Position": "F64",
+      "MaxLen": 64,
+      "LengthType": "FIXED",
+      "ContentType": "B",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F65",
+      "MaxLen": 1,
+      "LengthType": "FIXED",
+      "ContentType": "B",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F66",
+      "MaxLen": 1,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F67",
+      "MaxLen": 2,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F68",
+      "MaxLen": 3,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F69",
+      "MaxLen": 3,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F70",
+      "MaxLen": 3,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F71",
+      "MaxLen": 4,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F72",
+      "MaxLen": 4,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F73",
+      "MaxLen": 6,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F74",
+      "MaxLen": 10,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F75",
+      "MaxLen": 10,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F76",
+      "MaxLen": 10,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F77",
+      "MaxLen": 10,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F78",
+      "MaxLen": 10,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F79",
+      "MaxLen": 10,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F80",
+      "MaxLen": 10,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F81",
+      "MaxLen": 10,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F82",
+      "MaxLen": 12,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F83",
+      "MaxLen": 12,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F84",
+      "MaxLen": 12,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F85",
+      "MaxLen": 12,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F86",
+      "MaxLen": 16,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F87",
+      "MaxLen": 16,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F88",
+      "MaxLen": 16,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F89",
+      "MaxLen": 16,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F90",
+      "MaxLen": 42,
+      "LengthType": "FIXED",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F91",
+      "MaxLen": 1,
+      "LengthType": "FIXED",
+      "ContentType": "AN",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F92",
+      "MaxLen": 2,
+      "LengthType": "FIXED",
+      "ContentType": "AN",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F93",
+      "MaxLen": 5,
+      "LengthType": "FIXED",
+      "ContentType": "AN",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F94",
+      "MaxLen": 7,
+      "LengthType": "FIXED",
+      "ContentType": "AN",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F95",
+      "MaxLen": 42,
+      "LengthType": "FIXED",
+      "ContentType": "AN",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F96",
+      "MaxLen": 64,
+      "LengthType": "FIXED",
+      "ContentType": "B",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F97",
+      "MaxLen": 16,
+      "LengthType": "FIXED",
+      "ContentType": "AN",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F98",
+      "MaxLen": 25,
+      "LengthType": "FIXED",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    },
+    {
+      "Position": "F99",
+      "MaxLen": 11,
+      "LengthType": "LLVAR",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F100",
+      "MaxLen": 11,
+      "LengthType": "LLVAR",
+      "ContentType": "N",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F101",
+      "MaxLen": 17,
+      "LengthType": "LLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F102",
+      "MaxLen": 28,
+      "LengthType": "LLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F103",
+      "MaxLen": 28,
+      "LengthType": "LLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F104",
+      "MaxLen": 100,
+      "LengthType": "LLLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F105",
+      "MaxLen": 999,
+      "LengthType": "LLLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F106",
+      "MaxLen": 999,
+      "LengthType": "LLLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F107",
+      "MaxLen": 999,
+      "LengthType": "LLLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F108",
+      "MaxLen": 999,
+      "LengthType": "LLLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F109",
+      "MaxLen": 999,
+      "LengthType": "LLLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F110",
+      "MaxLen": 999,
+      "LengthType": "LLLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F111",
+      "MaxLen": 999,
+      "LengthType": "LLLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F112",
+      "MaxLen": 999,
+      "LengthType": "LLLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F113",
+      "MaxLen": 999,
+      "LengthType": "LLLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F114",
+      "MaxLen": 999,
+      "LengthType": "LLLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F115",
+      "MaxLen": 999,
+      "LengthType": "LLLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F116",
+      "MaxLen": 999,
+      "LengthType": "LLLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F117",
+      "MaxLen": 999,
+      "LengthType": "LLLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F118",
+      "MaxLen": 999,
+      "LengthType": "LLLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F119",
+      "MaxLen": 999,
+      "LengthType": "LLLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F120",
+      "MaxLen": 999,
+      "LengthType": "LLLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F121",
+      "MaxLen": 999,
+      "LengthType": "LLLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F122",
+      "MaxLen": 999,
+      "LengthType": "LLLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F123",
+      "MaxLen": 999,
+      "LengthType": "LLLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F124",
+      "MaxLen": 999,
+      "LengthType": "LLLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F125",
+      "MaxLen": 999,
+      "LengthType": "LLLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F126",
+      "MaxLen": 999,
+      "LengthType": "LLLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F127",
+      "MaxLen": 999,
+      "LengthType": "LLLVAR",
+      "ContentType": "ANS",
+      "DataType": "ASCII",
+      "LenDataType": "ASCII",
+      "Encoding": "None"
+    },
+    {
+      "Position": "F128",
+      "MaxLen": 8,
+      "LengthType": "FIXED",
+      "ContentType": "B",
+      "DataType": "ASCII",
+      "LenDataType": 0,
+      "Encoding": "None"
+    }
+  ]
+}
