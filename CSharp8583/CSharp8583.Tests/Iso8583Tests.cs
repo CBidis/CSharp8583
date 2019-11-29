@@ -9,7 +9,7 @@ namespace CSharp8583.Tests
     public class Iso8583Tests
     {
         private readonly Iso8583 _iso8583;
-        public Iso8583Tests() => _iso8583 = new Iso8583();
+        public Iso8583Tests() => _iso8583 = new Iso8583(new FieldValidator());
 
         [Fact]
         public void Duplicate_Message_ISO_Fields_Should_Throw_ArgException()

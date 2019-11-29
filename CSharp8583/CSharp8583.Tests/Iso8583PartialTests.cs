@@ -8,7 +8,7 @@ namespace CSharp8583.Tests
     public class Iso8583PartialTests
     {
         private readonly Iso8583 _iso8583;
-        public Iso8583PartialTests() => _iso8583 = new Iso8583();
+        public Iso8583PartialTests() => _iso8583 = new Iso8583(new FieldValidator());
 
         [Fact]
         public void ASCII_Message_All_ISO_Fields_Parsed()

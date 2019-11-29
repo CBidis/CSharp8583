@@ -12,6 +12,16 @@ namespace CSharp8583
     /// </summary>
     public partial class Iso8583
     {
+        private readonly IValidator _validator;
+        /// <summary>
+        /// Constructor with Validator Object
+        /// </summary>
+        /// <param name="validator">an implementation of IValidator</param>
+        public Iso8583(IValidator validator)
+        {
+            _validator = validator ?? throw new ArgumentNullException(nameof(validator));
+        }
+
         /// <summary>
         /// Parse Iso Message bytes to IIsoMessage object
         /// </summary>
@@ -68,6 +78,9 @@ namespace CSharp8583
                 if (fieldProperties != null)
                 {
                     var valueForMessage = fieldProperties.Value;
+
+                    _validator?.EnsureContent(fieldProperties);
+                    _validator?.EnsureLength(fieldProperties);
 
                     if (fieldProperties is IsoField isoField && isoField.Tags != null)
                     {

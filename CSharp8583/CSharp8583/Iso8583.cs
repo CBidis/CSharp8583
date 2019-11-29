@@ -17,6 +17,13 @@ namespace CSharp8583
     public partial class Iso8583
     {
         /// <summary>
+        /// Default Empty Constructor
+        /// </summary>
+        public Iso8583()
+        {
+        }
+
+        /// <summary>
         /// Parse a byte[] iso Message to an Instance of TMessage
         /// </summary>
         /// <typeparam name="TMessage">TMessage class, a derived class of BaseMessage class</typeparam>
@@ -276,7 +283,12 @@ namespace CSharp8583
                         messageBytes.AddRange(customFieldBytes);
                     }
                     else
+                    {
+                        propAttr.Value = valueForMessage.ToString();
+                        _validator?.EnsureContent(propAttr);
+                        _validator?.EnsureLength(propAttr);
                         messageBytes.AddRange(propAttr.BuildFieldValue(valueForMessage.ToString()));
+                    }
                 }
             }
         }
