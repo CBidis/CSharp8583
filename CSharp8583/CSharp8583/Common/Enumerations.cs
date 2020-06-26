@@ -121,7 +121,11 @@
         /// <summary>
         /// LLLVAR binary field of up to 999 bits in length
         /// </summary>
-        LLLVAR = 3
+        LLLVAR = 3,
+        /// <summary>
+        /// LLLLVAR binary field of up to 9999 bits in length
+        /// </summary>
+        LLLLVAR = 4
     }
 
     /// <summary>
