@@ -125,6 +125,7 @@ namespace CSharp8583.Extensions
 
                     case LengthType.LLVAR:
                     case LengthType.LLLVAR:
+                    case LengthType.LLLLVAR:
                         if (isoFieldProperties.LenDataType == DataType.ASCII)
                         {
                             var lenValue = isoMessageBytes.Skip(currentPos).Take(lengthBytes).ToASCIIString(isoFieldProperties.Encoding);
@@ -204,6 +205,7 @@ namespace CSharp8583.Extensions
                     case LengthType.LVAR:
                     case LengthType.LLVAR:
                     case LengthType.LLLVAR:
+                    case LengthType.LLLLVAR:
                         if (isoFieldProperties.LenDataType == DataType.ASCII)
                         {
                             var valueLen = fieldValue?.Length.ToString().PadLeft((int)isoFieldProperties.LengthType, '0');
