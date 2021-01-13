@@ -62,13 +62,13 @@ namespace CSharp8583.Extensions
             var tagName = string.Empty;
             var fieldValue = string.Empty;
             var lengthBytes = tagProperties.LenBytesLen;
-
+            var tagBytes = tagProperties.TagBytesLen;
             try
             {
                 if (tagProperties.IsTLV)
                 {
-                    tagName = fieldBytes.Skip(currentPos).Take(2).ToASCIIString(tagProperties.Encoding);
-                    currentPos = currentPos + 2;
+                    tagName = fieldBytes.Skip(currentPos).Take(tagBytes).ToASCIIString(tagProperties.Encoding);
+                    currentPos = currentPos + tagBytes;
                 }
 
                 int fieldLen;
@@ -93,9 +93,9 @@ namespace CSharp8583.Extensions
                 if (!tagProperties.IsTLV)
                 {
                     currentPos = currentPos + lengthBytes;
-                    tagName = fieldBytes.Skip(currentPos).Take(2).ToASCIIString(tagProperties.Encoding);
-                    fieldLen = fieldLen - 2;
-                    currentPos = currentPos + 2;
+                    tagName = fieldBytes.Skip(currentPos).Take(tagBytes).ToASCIIString(tagProperties.Encoding);
+                    fieldLen = fieldLen - tagBytes;
+                    currentPos = currentPos + tagBytes;
                 }
                 else
                     currentPos = currentPos + lengthBytes;

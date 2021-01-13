@@ -46,5 +46,10 @@ namespace CSharp8583.Models
         /// IsTLV
         /// </summary>
         public bool IsTLV { get; set; } = true;
+
+        /// <summary>
+        /// Lentgh of Tag Bytes
+        /// </summary>
+        public int TagBytesLen { get; set; }
     }
 }

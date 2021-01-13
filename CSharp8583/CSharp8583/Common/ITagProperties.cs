@@ -26,6 +26,11 @@
         int LenBytesLen { get; set; }
 
         /// <summary>
+        /// Lentgh of Tag Bytes
+        /// </summary>
+        int TagBytesLen { get; set; }
+
+        /// <summary>
         /// Data Type of Field
         /// </summary>
         DataType DataType { get; set; }
