@@ -48,8 +48,8 @@ namespace CSharp8583.Models
         public bool IsTLV { get; set; } = true;
 
         /// <summary>
-        /// Lentgh of Tag Bytes
+        /// Lentgh of Tag Bytes, with a default value of 2
         /// </summary>
-        public int TagBytesLen { get; set; }
+        public int TagBytesLen { get; set; } = 2;
     }
 }
